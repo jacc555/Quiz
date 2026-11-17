@@ -128,6 +128,7 @@ h2{margin:0;font-size:1.5rem;flex:1}
 .tile[data-og]{position:relative;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 .tile.hold{transform:scale(.93);transition:transform 2s linear}
 .tile.lift{z-index:50;pointer-events:none;transition:none;opacity:.95;box-shadow:0 18px 30px rgba(0,0,0,.35)}
+.fq{display:block;font-size:2.8rem;line-height:1;font-weight:700}
 </style></head><body><div id="app"></div>
 <script>
 (function(){'use strict';
@@ -483,7 +484,18 @@ const eqd=x=>`<div class="eq">${x}</div>`;
 const FN={'1/2':'połowa','1/3':'jedna trzecia','1/4':'ćwiartka','2/3':'dwie trzecie','3/4':'trzy czwarte'};
 const FNL={'1/2':'jedna druga','1/3':'jedna trzecia','1/4':'jedna czwarta','2/3':'dwie trzecie','3/4':'trzy czwarte','1/5':'jedna piąta','2/5':'dwie piąte','3/5':'trzy piąte','4/5':'cztery piąte','1/6':'jedna szósta','5/6':'pięć szóstych','1/8':'jedna ósma','3/8':'trzy ósme'};
 const UJ=QR('Jak nazywamy 1/2?~połowa~🍕|Jak nazywamy 1/4?~ćwiartka~🍰|Ile połówek ma całe jabłko?~dwie~🍎|Ile ćwiartek ma cała pizza?~cztery~🍕|Co jest większe: połowa czy ćwiartka?~połowa~⚖️|Co jest mniejsze: ćwiartka czy połowa?~ćwiartka~⚖️|Ułamek 2/5: liczba 5 to…~mianownik~🔢~1|Ułamek 2/5: liczba 2 to…~licznik~🔢~1|Który ułamek oznacza całość?~4/4~⭕~1');
-const ulPie=l=>{const k=P(Object.keys(FN)),[a,b]=k.split('/');return mk('up'+k+Math.random(),'Jaka część koła jest pomalowana?',pie(+b,+a),ch(FN[k],Object.values(FN),4),FN[k]);};
+const GL={'1/2':'½','1/3':'⅓','2/3':'⅔','1/4':'¼','3/4':'¾','1/5':'⅕','2/5':'⅖','3/5':'⅗','4/5':'⅘','1/6':'⅙','5/6':'⅚','1/8':'⅛','3/8':'⅜','5/8':'⅝','7/8':'⅞'};
+const fgcd=(a,b)=>b?fgcd(b,a%b):a;
+const fq=(k,p,big,l,u)=>{const gv=x=>{const[a,b]=x.split('/');return a/b;},v=gv(k),ks=Object.keys(GL).filter(x=>x!==k).sort((x,y)=>Math.abs(gv(x)-v)-Math.abs(gv(y)-v)+(Math.random()-.5)*.25).slice(0,l?6:4),o=sh([k,...sh(ks).slice(0,3)]).map(x=>GL[x]);const q=mk('fq'+(u||Math.random()),p,big,o,GL[k]);q.oi=o.map(g=>`<span class="fq">${g}</span>`);return q;};
+const fKs=n=>{const r=[];for(let i=1;i<n;i++)if(fgcd(i,n)===1)r.push(i);return r;};
+const ulPie=l=>{const k=P(Object.keys(FN)),[a,b]=k.split('/');return fq(k,'Jaka część koła jest pomalowana?',pie(+b,+a),l,'p'+k);};
+const fPart=l=>{const n=P(l?[3,4,5,6,8]:[2,3,4]),k=P(fKs(n)),key=k+'/'+n,rd=Math.random()<.4;let big,nm,u,rw=1;
+if(rd){big=pie(n,k);nm='koła';u='c'+key;}else{rw=(n>=4&&n%2===0&&Math.random()<.5)?2:1;const cl=n/rw,W=300,H=rw===2?150:90,cw=W/cl,rh=H/rw;let c='';for(let i=0;i<n;i++){const x=(i%cl)*cw,y=Math.floor(i/cl)*rh;c+=`<rect x="${x+2}" y="${y+2}" width="${cw-4}" height="${rh-4}" rx="8" fill="${i<k?'#FF8A3D':'#FFF3E0'}" stroke="#8B5A2B" stroke-width="3"/>`;}
+big=`<svg viewBox="0 0 ${W} ${H}" style="width:min(100%,330px);display:block;margin:6px auto">${c}</svg>`;nm=P(['czekolady','prostokąta','tabliczki']);u='r'+rw+key+nm;}
+return fq(key,'Jaka część '+nm+' jest zamalowana?',big,l,u);};
+const FSET=[['🍎','🍏','jabłek','czerwone'],['🔴','🔵','kulek','czerwone'],['🍓','🫐','owoców','truskawki'],['🌹','🌻','kwiatów','róże'],['🐱','🐶','zwierząt','koty'],['⭐','🌙','symboli','gwiazdki'],['🚗','🚌','pojazdów','samochody']];
+const fSet=l=>{const n=P(l?[3,4,5,6,8]:[2,3,4]),k=P(fKs(n)),f=P(FSET),it=sh([...Array(k).fill(f[0]),...Array(n-k).fill(f[1])]);
+return fq(k+'/'+n,'Jaką częścią wszystkich '+f[2]+' są '+f[3]+'?',`<div style="font-size:3.2rem;line-height:1.25;letter-spacing:.08em;text-align:center">${it.join('')}</div>`,l,'s'+f[0]+k+'/'+n);};
 const ulCnt=l=>{const n=P(l?[3,4,5,6,8]:[2,3,4]),k=R(1,n-1);return mk('uc'+n+k+Math.random(),'Na ile równych części podzielono koło?',pie(n,k),ch(''+n,['2','3','4','5','6','8'],4),''+n);};
 const ulRead=l=>{const ks=Object.keys(FNL).slice(0,l?13:5),k=P(ks);return mk('ur'+k+Math.random(),'Jak czytamy ułamek '+k+'?',eqd(k),ch(FNL[k],ks.map(x=>FNL[x]),4),FNL[k]);};
 const ulOf=l=>{const d=P(l?[2,3,4,5,10]:[2,4]),m=R(1,l?8:5),w=d*m,n=l?R(1,d-1):1;return ny('uo'+n+d+w,`Ile to ${n}/${d} z ${w}?`,eqd(`${n}/${d} z ${w} = ?`),n*m);};
@@ -492,6 +504,7 @@ const ulCmp=l=>{let n1,k1,n2,k2,r,g=0;do{n1=P([2,3,4,5,6,8]);k1=R(1,n1-1);if(l&&
 const ulAll=[ulPie,ulCnt,ulRead,ulOf,ulEq,ulCmp,QA(UJ)];
 sf('ul').push(['cnt','Na ile części?','✂️',ulCnt],['nam','Jak czytamy ułamek?','🗣️',ulRead],['pol','Ułamek z liczby','🔢',ulOf],['wie','Który większy?','⚖️',ulCmp],['row','Ułamki równe','🟰',ulEq],['poj','Połowa i ćwiartka','📖',QA(UJ)],['tst','Test z ułamków','🎯',mixq(ulAll)]);
 SU[0].s.push(['poz','Poznaj ułamki','🍕',mixq([ulPie,ulPie,QA(UJ),ulCnt])]);
+SU[0].s.push(['zam','Jaka część zamalowana?','🎨',fPart],['czs','Ile to jest? (część zbioru)','🍎',fSet]);sf('ul').push(['zam','Jaka część zamalowana?','🎨',fPart],['czs','Ile to jest? (część zbioru)','🍎',fSet]);
 /* --- Polski: wspolne generatory --- */
 const NN=['stół','kot','dom','mama','lampa','chleb','książka','drzewo','okno','pies'],VV=['biegnie','skacze','śpiewa','czyta','pisze','gra','rysuje','śpi'],AA=['duży','mały','czerwony','wesoły','zimny','piękny','szybki','ciepły'];
 const posA=l=>{const c=P([['rzeczownik',NN,[...VV,...AA]],['czasownik',VV,[...NN,...AA]],['przymiotnik',AA,[...NN,...VV]]]);const a=P(c[1]);return gx('Które słowo to '+c[0]+'?',a,c[2]);};
