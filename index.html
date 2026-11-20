@@ -37,7 +37,76 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;paddin
 .xpb{background:#CFE5FA;border:3px solid #CBD5E1;border-radius:22px;width:150px;height:150px;margin:6px auto;display:grid;place-items:center}.xpb .xpc{width:90%;height:90%}
 .xpr{all:unset;width:58px;height:58px;border-radius:14px;background:#CFE5FA;border:3px solid #4B5E8E;display:grid;place-items:center;cursor:pointer}.xpr img{width:90%}.xpl{font-weight:700}
 .xhn{font-size:.95rem;color:var(--mut);text-align:center}.xq2{text-align:center;font-weight:700;font-size:1.05rem}
-.shr{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:6px}.shi{font-size:96px;line-height:1}.shp{font-weight:700;color:var(--mut);margin-top:4px}.olg{display:grid;place-items:center;background:#fff;border-radius:12px;padding:4px;height:58px;margin-bottom:5px}.olg img{max-width:100%;max-height:50px;object-fit:contain;display:block}.olt{display:block;font-size:.95rem;line-height:1.2}.zt{font-size:1.25rem;font-weight:700;margin-top:6px;text-align:center}.lgbox{background:#fff;border:3px solid #CBD5E1;border-radius:22px;padding:14px;margin:6px auto 0;width:min(100%,300px);min-height:150px;display:grid;place-items:center}.lgbox img{max-width:100%;max-height:130px;object-fit:contain;display:block}.pm{display:block;object-fit:contain;border-radius:50%}.pm.pb{border-radius:8px;width:112px;height:auto;max-height:70px;background:#fff;box-shadow:0 2px 6px #0003}.mbox{background:#fff;border:3px solid #CBD5E1;border-radius:22px;padding:14px;margin:6px auto 0;width:min(100%,320px);min-height:150px;display:grid;place-items:center}.mbox img{max-width:100%;max-height:150px;object-fit:contain;display:block}
+.shr{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:6px}.shi{font-size:96px;line-height:1}.shp{font-weight:700;color:var(--mut);margin-top:4px}.olg{display:grid;place-items:center;background:#fff;border-radius:12px;padding:4px;height:58px;margin-bottom:5px}.olg img{max-width:100%;max-height:50px;object-fit:contain;display:block}.olt{display:block;font-size:.95rem;line-height:1.2}body.gf{background:#131F24;color:#fff;padding-left:0;padding-right:0;overflow-x:hidden}body.gf #app{max-width:none;padding-top:0;gap:0}body.nb{padding-bottom:96px}
+.gnav{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;justify-content:center;gap:13px;padding:8px 12px max(8px,env(safe-area-inset-bottom,0px));background:var(--sf);border-top:2px solid var(--ln)}
+.gnav button{all:unset;box-sizing:border-box;width:77px;height:45px;border-radius:15px;display:grid;place-items:center;font-size:24px;line-height:1;cursor:pointer;border:2px solid transparent;-webkit-tap-highlight-color:transparent}
+.gnav button.on{background:#DCEBFF;border-color:#3B82F6}.gnav.dk{background:#131F24;border-top-color:#37464F}.gnav.dk button.on{background:#202F36;border-color:#1CB0F6}.gnav button:active{transform:translateY(2px)}
+.gw{position:relative;width:100%;max-width:700px;margin:0 auto;padding:70px 0 26px}
+.gchip{position:fixed;top:max(10px,env(safe-area-inset-top,0px));right:12px;z-index:30;display:flex;align-items:center;gap:4px;background:#202F36;border:2px solid #37464F;border-radius:999px;padding:3px 14px 3px 6px;font-weight:700;color:#FFC800}.gchip svg{width:26px;height:26px}
+.gb{position:relative}.gr{position:relative;height:100px;display:flex;justify-content:center;align-items:center}.gr.wb{margin-top:36px}
+.gx{position:relative;transform:translateX(var(--x,0px))}
+.gn{all:unset;box-sizing:border-box;position:relative;width:76px;height:68px;border-radius:50%;display:grid;place-items:center;font-size:34px;line-height:1;cursor:pointer;background:var(--c);box-shadow:0 8px 0 var(--d);-webkit-tap-highlight-color:transparent}
+.gn::after{content:"";position:absolute;left:15%;top:9%;width:44%;height:24%;border-radius:50%;background:rgba(255,255,255,.3);transform:rotate(-18deg)}
+.gn .e{position:relative;z-index:1;filter:drop-shadow(0 2px 0 rgba(0,0,0,.2))}
+.gn.off{background:#37464F;box-shadow:0 8px 0 #2B3840}.gn.off::after{background:rgba(255,255,255,.07)}.gn.off .e{filter:grayscale(1) brightness(.75);opacity:.5}
+.gn:active{transform:translateY(5px);box-shadow:0 3px 0 var(--d)}.gn.off:active{box-shadow:0 3px 0 #2B3840}
+.gn.ch{width:84px;height:72px;border-radius:20px;font-size:40px;background:linear-gradient(#FFD84D,#FFB800);box-shadow:0 8px 0 #D98E00}.gn.ch.off{background:#37464F;box-shadow:0 8px 0 #2B3840}
+.gn.tr{width:86px;height:78px;font-size:38px;box-shadow:0 8px 0 var(--d),0 0 0 6px rgba(255,255,255,.16)}.gn.tr.off{box-shadow:0 8px 0 #2B3840,0 0 0 6px rgba(255,255,255,.05)}
+.gn.nx{animation:gpl 1.3s ease-in-out infinite;box-shadow:0 8px 0 var(--d),0 0 0 9px rgba(255,255,255,.16)}
+.gn.nx.off{background:var(--c);box-shadow:0 8px 0 var(--d),0 0 0 9px rgba(255,255,255,.16)}.gn.nx.off .e{filter:none;opacity:1}
+@keyframes gpl{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+.gbub{position:absolute;left:50%;top:-44px;transform:translateX(-50%);background:#fff;color:var(--c,#58CC02);font-weight:700;font-size:.95rem;white-space:nowrap;padding:6px 14px;border-radius:14px;box-shadow:0 4px 0 #CFCFCF;animation:gbb 1.1s ease-in-out infinite;pointer-events:none;z-index:4}
+.gbub.g{color:#7E8D95}.gbub::after{content:"";position:absolute;left:50%;bottom:-6px;width:14px;height:14px;background:#fff;transform:translateX(-50%) rotate(45deg);border-radius:3px;box-shadow:3px 3px 0 #CFCFCF;z-index:-1}
+@keyframes gbb{0%,100%{margin-top:0}50%{margin-top:-6px}}
+.gh{display:flex;align-items:center;gap:14px;margin:16px 14px 0;color:#8EA0A8;font-size:1.05rem;font-weight:600;text-align:center;line-height:1.25}.gh i{flex:1;height:2px;background:#37464F;border-radius:2px}.gh span{max-width:62%}
+.gbg{position:relative;height:150px;display:grid;place-items:center}.gbs{display:block;filter:drop-shadow(0 4px 0 rgba(0,0,0,.18))}
+.gc{position:absolute;top:-38px;width:104px;z-index:2;display:flex;flex-direction:column;align-items:center;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.gce{font-size:76px;line-height:1;transform-origin:50% 100%;position:relative;z-index:1}
+.gsh{width:70px;height:14px;border-radius:50%;background:#0E181C;margin-top:-8px}
+.gst{display:flex;gap:2px;margin-top:4px}.gst svg{width:24px;height:24px}.gst svg:nth-child(1){transform:rotate(-14deg) translateY(-3px)}.gst svg:nth-child(2){transform:translateY(3px)}.gst svg:nth-child(3){transform:rotate(14deg) translateY(-3px)}
+.gc.off .gce{filter:grayscale(1) brightness(.38);opacity:.9}
+.gc.gbob .gce{animation:gbob 2.2s ease-in-out infinite}.gc.gwig .gce{animation:gwig 1.8s ease-in-out infinite}.gc.gpul .gce{animation:gpul 1.6s ease-in-out infinite}.gc.gwav .gce{animation:gwav 2.4s ease-in-out infinite}
+.gc.gjoy .gce{animation:gjoy .7s ease-in-out 2}
+@keyframes gbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes gwig{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+@keyframes gpul{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+@keyframes gwav{0%,100%{transform:rotate(0)}20%{transform:rotate(-12deg)}40%{transform:rotate(9deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(5deg)}}
+@keyframes gjoy{0%,100%{transform:translateY(0) scale(1)}40%{transform:translateY(-26px) scale(1.12) rotate(-8deg)}70%{transform:translateY(-6px) rotate(6deg)}}
+.gsp{position:absolute;top:2px;right:-2px;font-style:normal;font-size:22px;animation:gtw 1.7s ease-in-out infinite;z-index:2}@keyframes gtw{0%,100%{opacity:.15;transform:scale(.6) rotate(0)}50%{opacity:1;transform:scale(1.15) rotate(30deg)}}
+.gwh{position:absolute;top:0;left:-6px;font-style:normal;font-size:28px;transform-origin:70% 80%;animation:gwv 1s ease-in-out infinite;z-index:2}@keyframes gwv{0%,100%{transform:rotate(-20deg)}50%{transform:rotate(25deg)}}
+@media(prefers-reduced-motion:reduce){.gc .gce,.gn.nx,.gbub,.gsp,.gwh{animation:none!important}}
+.stov{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:18px;animation:stbi .25s ease-out both}
+.stbd{position:absolute;inset:0;background:rgba(8,20,28,.58);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.stov.out .stbd{animation:stbo .7s ease-in forwards}
+@keyframes stbi{from{opacity:0}to{opacity:1}}@keyframes stbo{to{opacity:0}}
+.stw{position:relative;width:min(88vw,372px);animation:stin .8s cubic-bezier(.2,1.25,.4,1) both;filter:drop-shadow(0 10px 0 rgba(90,140,200,.35)) drop-shadow(0 18px 22px rgba(0,0,0,.35))}
+@keyframes stin{0%{transform:scale(.12) rotate(-12deg);opacity:0}55%{transform:scale(1.08) rotate(2deg);opacity:1}78%{transform:scale(.97) rotate(-1deg)}100%{transform:scale(1) rotate(0)}}
+.stov.out .stw{animation:stout .7s ease-in forwards}
+@keyframes stout{0%{transform:scale(1);opacity:1;filter:blur(0)}55%{transform:scale(.82) translateY(-8px);opacity:.65;filter:blur(3px)}100%{transform:scale(.4) translateY(-46px);opacity:0;filter:blur(16px)}}
+.stbm{position:absolute;inset:0;pointer-events:none}.stcb{position:absolute;border-radius:50%;background:var(--cbg,#fff)}
+.stc{position:relative;text-align:center;padding:30px 26px 24px;color:#2B4A6F;background:#fff;border-radius:46px;z-index:1}
+.stw.sh-cloud .stc{--cbg:#fff}.stw.sh-cloud{--cbg:#fff}
+.stw.sh-night{--cbg:#2C3A82}.stw.sh-night .stc{background:linear-gradient(#26337A,#3A2B7C);color:#F2F0FF;border-radius:46px}.stw.sh-night .stti{color:#FFE9A8}
+.ns{position:absolute;width:5px;height:5px;border-radius:50%;background:#fff;z-index:1;animation:stw 2s ease-in-out infinite;pointer-events:none}@keyframes stw{0%,100%{opacity:.2;transform:scale(.6)}50%{opacity:1;transform:scale(1.4)}}
+.mn{position:absolute;top:-6px;right:12px;font-size:34px;z-index:2;animation:gbob 3s ease-in-out infinite}
+.stw.sh-sun .stc{border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:11% 12%;background:radial-gradient(circle at 35% 30%,#FFF8B8,#FFD23F 72%);color:#6B4300}
+.ry{position:absolute;inset:-34px;border-radius:50%;background:repeating-conic-gradient(#FFB300 0 9deg,transparent 9deg 30deg);-webkit-mask:radial-gradient(circle,transparent 56%,#000 57%);mask:radial-gradient(circle,transparent 56%,#000 57%);animation:sry 22s linear infinite}@keyframes sry{to{transform:rotate(360deg)}}
+.stw.sh-bubble .stc{border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:11% 12%;background:radial-gradient(circle at 30% 24%,rgba(255,255,255,.97),rgba(214,238,255,.75) 46%,rgba(255,224,245,.7) 72%,rgba(205,255,236,.65));border:5px solid rgba(255,255,255,.9);box-shadow:inset 0 0 40px rgba(150,200,255,.5),inset -12px -12px 30px rgba(255,170,230,.4)}
+.stw.sh-bubble{filter:drop-shadow(0 14px 18px rgba(0,0,0,.3))}.stw.sh-bubble .stc{animation:sbw 3s ease-in-out infinite}@keyframes sbw{0%,100%{border-radius:50% 50% 50% 50%}50%{border-radius:48% 52% 51% 49%}}
+.bh{position:absolute;left:16%;top:12%;width:26%;height:14%;border-radius:50%;background:rgba(255,255,255,.85);transform:rotate(-30deg);z-index:2;pointer-events:none}.bh.b2{left:70%;top:74%;width:8%;height:5%}
+.ste{font-size:46px;line-height:1;animation:gbob 2.2s ease-in-out infinite}.stk{display:inline-block;margin:6px 0 2px;padding:2px 12px;border-radius:999px;background:rgba(80,140,255,.16);font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.stw.sh-night .stk{background:rgba(255,255,255,.18)}.stw.sh-sun .stk{background:rgba(255,255,255,.45)}
+.stti{font-size:1.18rem;font-weight:700;margin:2px 0 6px;line-height:1.2}.stxt{font-size:1.02rem;line-height:1.45}.stxt.sm{font-size:.94rem;line-height:1.4}
+.sh-sun .stxt,.sh-bubble .stxt{font-size:.93rem;line-height:1.38}.sh-sun .stxt.sm,.sh-bubble .stxt.sm{font-size:.85rem;line-height:1.33}.sh-sun .stti,.sh-bubble .stti{font-size:1.05rem}.sh-sun .ste,.sh-bubble .ste{font-size:36px}
+.stbtn{margin-top:12px;border:0;border-radius:999px;padding:8px 24px;font:inherit;font-weight:700;background:#FFC800;color:#6A4A00;box-shadow:0 4px 0 #D9A400;cursor:pointer}.stbtn:active{transform:translateY(3px);box-shadow:0 1px 0 #D9A400}
+.stps{position:absolute;inset:0;pointer-events:none;z-index:3}
+.pf{position:absolute;left:50%;top:50%;width:var(--w);height:var(--w);margin:calc(var(--w)/-2) 0 0 calc(var(--w)/-2);border-radius:50%;background:var(--c);opacity:0;filter:blur(1.5px);animation:pfo .9s ease-out forwards;animation-delay:var(--d)}
+@keyframes pfo{0%{opacity:.95;transform:translate(0,0) scale(.3)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(var(--s))}}
+.stsp{position:absolute;left:50%;top:50%;font-size:22px;opacity:0;animation:spo 1s ease-out forwards;animation-delay:var(--d)}
+@keyframes spo{0%{opacity:1;transform:translate(0,0) scale(.4) rotate(0)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.2) rotate(var(--r))}}
+.gbg{cursor:pointer}.gbg svg{pointer-events:none}
+@media(prefers-reduced-motion:reduce){.stw,.ste,.ry,.ns,.mn{animation:none!important}}
+.zt{font-size:1.25rem;font-weight:700;margin-top:6px;text-align:center}.lgbox{background:#fff;border:3px solid #CBD5E1;border-radius:22px;padding:14px;margin:6px auto 0;width:min(100%,300px);min-height:150px;display:grid;place-items:center}.lgbox img{max-width:100%;max-height:130px;object-fit:contain;display:block}.pm{display:block;object-fit:contain;border-radius:50%}.pm.pb{border-radius:8px;width:112px;height:auto;max-height:70px;background:#fff;box-shadow:0 2px 6px #0003}.mbox{background:#fff;border:3px solid #CBD5E1;border-radius:22px;padding:14px;margin:6px auto 0;width:min(100%,320px);min-height:150px;display:grid;place-items:center}.mbox img{max-width:100%;max-height:150px;object-fit:contain;display:block}
 h2{margin:0;font-size:1.5rem;flex:1}
 .grid{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}.grid>*{flex:0 0 calc(50% - 7px);min-width:0;max-width:260px}@media(min-width:600px){.grid>*{flex-basis:calc(25% - 11px)}}
 .tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:156px;padding:14px 10px;border-radius:24px;background:var(--c);color:#fff;font-weight:700;font-size:1.15rem;text-align:center;text-shadow:0 2px 0 rgba(0,0,0,.2);box-shadow:0 7px 0 rgba(0,0,0,.25);transition:transform .15s}
@@ -149,7 +218,11 @@ const R=(a,b)=>Math.floor(Math.random()*(b-a+1))+a,P=a=>a[R(0,a.length-1)];
 const sh=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=R(0,i);[a[i],a[j]]=[a[j],a[i]];}return a;};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const ch=(a,pool,n)=>sh([a,...sh([...new Set(pool)].filter(x=>x!==a)).slice(0,n-1)]);
-const nm=(a,n,s)=>{s=s||'';const x=new Set([a]);let g=0;while(x.size<n&&g++<80){const d=a+R(-6,6);if(d>=0&&d!==a)x.add(d);}while(x.size<n)x.add(a+x.size+7);return sh([...x]).map(v=>v+s);};
+const nm=(a,n,s)=>{s=s||'';const sp=Math.max(9,Math.round(Math.abs(a)*.45)),pool=[];for(let d=-sp;d<=sp;d++){const v=a+d;if(v>=0&&v!==a)pool.push(v);}
+const dg=v=>String(v).replace(/\D/g,''),used=new Set(dg(a)),ld=new Set([String(a).slice(-1)]),out=[a];
+while(out.length<n&&pool.length){let best=null,bs=1e9;for(const v of sh(pool)){let ov=0;new Set(dg(v)).forEach(c=>{if(used.has(c))ov++;});const sc=ov*10+(ld.has(String(v).slice(-1))?4:0)+Math.abs(v-a)*.03;if(sc<bs){bs=sc;best=v;}}
+out.push(best);pool.splice(pool.indexOf(best),1);dg(best).split('').forEach(c=>used.add(c));ld.add(String(best).slice(-1));}
+while(out.length<n)out.push(a+out.length+7);return sh(out).map(v=>v+s);};
 const mk=(k,p,big,o,a)=>({k,p,big,t:'c',o,a});
 const bd=(k,p,big,w)=>{w=w.replace(/ /g,'');let l=sh(w.split(''));let g=0;while(l.join('')===w&&g++<9)l=sh(l);return{k,p,big,t:'b',o:l,a:w};};
 /* ===== MATEMATYKA ===== */
@@ -916,7 +989,7 @@ const CO=['#FF5A5F','#3B82F6','#22B573','#8B5CF6','#F97316','#EC4899','#14B8A6']
 const S={v:'home'};
 const lv=()=>Math.floor(sv.t/LP)+1,pc=()=>sv.t%LP;
 const star=`<svg width="30" height="30" viewBox="0 0 24 24"><defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE066"/><stop offset=".5" stop-color="#FF9F1C"/><stop offset="1" stop-color="#FF4D8D"/></linearGradient></defs><path d="M12 2l3 6.3 6.9.9-5 4.8 1.3 6.9L12 17.5 5.8 20.9l1.3-6.9-5-4.8 6.9-.9z" fill="url(#sg)" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/></svg>`;
-function header(){if(['hub','play','res','art','col','puz','pzp','pzq','chess'].includes(S.v))return`<div class="hd mini" role="progressbar" aria-valuemin="0" aria-valuemax="${LP}" aria-valuenow="${pc()}" aria-label="Poziom ${lv()}: ${pc()} / ${LP} punktów"><div class="bar"><div class="fill" style="width:${pc()}%"></div></div></div>`;const f=['🌟','🎈','📚','🚀','🎨','⚽','🔢'].map((e,i)=>`<i style="left:${8+i*14}%;top:${i%2?58:8}%;animation-delay:${i*.5}s">${e}</i>`).join('');
+function header(){if(S.v==='gift')return'';if(['hub','play','res','art','col','puz','pzp','pzq','chess'].includes(S.v))return`<div class="hd mini" role="progressbar" aria-valuemin="0" aria-valuemax="${LP}" aria-valuenow="${pc()}" aria-label="Poziom ${lv()}: ${pc()} / ${LP} punktów"><div class="bar"><div class="fill" style="width:${pc()}%"></div></div></div>`;const f=['🌟','🎈','📚','🚀','🎨','⚽','🔢'].map((e,i)=>`<i style="left:${8+i*14}%;top:${i%2?58:8}%;animation-delay:${i*.5}s">${e}</i>`).join('');
 return`<div class="hd"><div class="fl">${f}</div><div class="hr"><div><div class="ti">Quiz Mądrala</div><div class="su">Ucz się i baw!</div></div><div class="chip">${star}<b>${sv.t}</b></div></div><div class="bar"><div class="fill" style="width:${pc()}%"></div></div><div class="lv">Poziom ${lv()} · ${pc()} / ${LP} punktów</div></div>`;}
 const top=t=>`<div class="top"><button class="bk" data-a="back" aria-label="Wstecz"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2>${t}</h2></div>`;
 const bst=k=>{const b=sv.b[k]||0;return b?'⭐'.repeat(b):'';};
@@ -944,6 +1017,126 @@ document.addEventListener('pointerup',fin);document.addEventListener('pointercan
 document.addEventListener('touchmove',e=>{if(dr&&e.cancelable)e.preventDefault();},{passive:false});
 document.addEventListener('contextmenu',e=>{if(e.target.closest(Q))e.preventDefault();});
 document.addEventListener('click',e=>{if(supp){e.stopPropagation();e.preventDefault();}},true);})();
+/* ===== EKRAN NAGRÓD: ścieżka punktowa ===== */
+const GPAL=[['#58CC02','#46A302'],['#1CB0F6','#1899D6'],['#FF86D0','#E0589F'],['#FFC800','#E5A800'],['#CE82FF','#A560E8'],['#2DD4BF','#14A394'],['#FF9600','#DB7F00']];
+const GTI=['Mały odkrywca','Ciekawski','Mądrala','Super uczeń','Szybki myśliciel','Mistrz zagadek','Łowca wiedzy','Tygrys nauki','Geniusz','Wielki mędrzec'];
+const GCH=[['🦊','gbob'],['🐼','gwig'],['🦁','gpul'],['🐸','gbob'],['🐙','gwav'],['🦄','gpul'],['🐯','gwig'],['🐵','gwav'],['🐶','gbob'],['🐱','gwig'],['🐨','gpul'],['🐰','gbob'],['🦉','gwig'],['🐧','gwav'],['🐢','gpul'],['🦖','gbob'],['🐬','gwav'],['🦋','gpul'],['🐝','gwig'],['🐘','gbob'],['🦒','gwav'],['🤖','gpul'],['👾','gwig'],['🧙','gbob'],['🧚','gwav'],['🦸','gpul'],['🧜','gwig'],['🐲','gbob']];
+const GPRZ=['🎈','🍭','🧸','🎨','⚽','🎮','🎵','🍦','🪄','🏅','🎯','🎪','🧩','🪁','🎩','🛸','🍩','🚀','🧁','🍪','🍓','🎸','🥁','🎺','📚','🔭','🧪','🎒','🚲','🛴','🛹','🏀','🏐','🎳','🎲','🪀','🎠','🎡','🎢','🐠','🌻','🍀','🌟','💫','🔮','🪅','🎊','🥳','🏰','🗝️','💡','🧲','🪐','🌈','🎬','📸','🧃','🍰','🍫','🍿','😎','🤩','🤠','🦄','🍉','🍕','🍔','🏄','⛸️','🎿','🪂','🚁','⛵','🚂','🎻','🎹','🖍️','✏️','🔔','🌙','☀️','🍎','🥕','🪆','🧶','🧵','🪁','🎁'];
+const GCHEST=['🎁','💰','🧰','🎊','🛍️'],GTRO=['🏆','🥇','🏅','👑','💎','🎖️'];
+const gSt=on=>`<svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.9z" fill="${on?'#FFC800':'#37464F'}" stroke="${on?'#E5A800':'#2B3840'}" stroke-width="1.5" stroke-linejoin="round"/></svg>`;
+const gBadge=(num,un,c,d)=>{const f=un?c:'#37464F',g=un?d:'#2B3840';let lb='';for(let i=0;i<8;i++){const a=i*Math.PI/4+Math.PI/8;lb+=`<circle cx="${(50+25*Math.cos(a)).toFixed(1)}" cy="${(46+25*Math.sin(a)).toFixed(1)}" r="14"/>`;}
+return`<svg class="gbs" viewBox="0 0 100 124" width="104" height="128" aria-hidden="true"><ellipse cx="50" cy="106" rx="34" ry="10" fill="#0E181C"/><ellipse cx="50" cy="102" rx="30" ry="8" fill="${g}"/><ellipse cx="50" cy="98" rx="30" ry="8" fill="${f}"/><g fill="${g}" transform="translate(0 6)">${lb}<circle cx="50" cy="46" r="30"/></g><g fill="${f}">${lb}<circle cx="50" cy="46" r="30"/></g><path d="M28 32a27 27 0 0 1 20-14" stroke="#fff" stroke-opacity="${un?.5:.12}" stroke-width="5" stroke-linecap="round" fill="none"/><text x="50" y="57" text-anchor="middle" font-size="34" font-weight="700" fill="${un?'#fff':'#52656D'}" font-family="Fredoka,Trebuchet MS,sans-serif">${num}</text></svg>`;};
+const gzx=(k,L)=>Math.round(Math.sin(2*Math.PI*k/9)*66*(L%2?-1:1));
+function giftv(){const t=sv.t,cur=Math.floor(t/LP),nL=Math.max(S.gn||0,cur+4),pcn=t%LP,step=LP/10;
+let tgtL=cur,tgtK=Math.floor(pcn/step),tgtB=false;if(tgtK>=9){tgtB=true;tgtL=cur+1;}
+let out=`<div class="gchip" aria-label="Punkty">${star}<b>${t}</b></div><div class="gw">`;
+for(let L=nL-1;L>=0;L--){const pal=GPAL[L%GPAL.length],ch=GCH[L%GCH.length],un0=t>=L*LP,prog=(t-L*LP)/LP,on3=[prog>=.34,prog>=.67,prog>=1];let b='';
+for(let k=8;k>=0;k--){const n=L*9+k,need=L*LP+(k+1)*step,un=t>=need,nx=!tgtB&&L===tgtL&&k===tgtK,kind=k===4?'ch':k===8?'tr':'',em=k===4?GCHEST[L%GCHEST.length]:k===8?GTRO[L%GTRO.length]:GPRZ[n%GPRZ.length],left=need-t;
+const bub=nx?`<div class="gbub">Jeszcze ${left} pkt</div>`:S.gt===n?`<div class="gbub${un?'':' g'}">${un?'Zdobyte! 🎉':'Jeszcze '+left+' pkt'}</div>`:'';
+let cha='';if(k===1){const side=L%2?'right':'left';cha=`<div class="gc ${un0?'on '+ch[1]:'off'}${S.gcw===L?' gjoy':''}" style="${side}:6px" data-a="gc" data-i="${L}" role="img" aria-label="Postać poziomu ${L+1}"><div class="gce">${ch[0]}</div>${un0&&ch[1]==='gwav'?'<i class="gwh">👋</i>':''}${un0?'<i class="gsp">✨</i>':''}<div class="gsh"></div><div class="gst">${on3.map(gSt).join('')}</div></div>`;}
+b+=`<div class="gr${nx?' wb':''}"${nx?' id="gcur"':''}>${cha}<div class="gx" style="--x:${gzx(k,L)}px"><button class="gn ${kind} ${un?'on':'off'}${nx?' nx':''}" data-a="gn" data-i="${n}" aria-label="Nagroda za ${need} punktów"><span class="e">${em}</span></button>${bub}</div></div>`;}
+const bn=tgtB&&L===tgtL;
+b+=`<div class="gh"><i></i><span>Poziom ${L+1}: ${GTI[L%GTI.length]}${L>=GTI.length?' '+(Math.floor(L/GTI.length)+1):''}</span><i></i></div><div class="gbg" data-a="gb" data-i="${L}" role="button" aria-label="Bajka z poziomu ${L+1}"${bn?' id="gcur"':''}>${bn?`<div class="gbub" style="top:-6px">Jeszcze ${L*LP-t} pkt</div>`:''}${gBadge(L+1,un0,pal[0],pal[1])}</div>`;
+out+=`<div class="gb" style="--c:${pal[0]};--d:${pal[1]}">${b}</div>`;}
+return out+'</div>';}
+function giftAfter(){if(S.v==='gift'&&S.gfx){S.gfx=false;const e=document.getElementById('gcur');if(e)e.scrollIntoView({block:'center'});else window.scrollTo(0,document.body.scrollHeight);}}
+const NAVV=['home','gift'];
+function navbar(){if(!NAVV.includes(S.v))return'';const g=S.v==='gift';return`<nav class="gnav${g?' dk':''}"><button class="${g?'':'on'}" data-a="tab" data-t="home" aria-label="Ekran główny">🏠</button><button class="${g?'on':''}" data-a="tab" data-t="gift" aria-label="Nagrody">🎁</button></nav>`;}
+{let gl=false;window.addEventListener('scroll',()=>{if(S.v!=='gift'||gl)return;if(window.scrollY<700){gl=true;const h0=document.documentElement.scrollHeight,y0=window.scrollY;S.gn=Math.max(S.gn||0,Math.floor(sv.t/LP)+4)+3;render();window.scrollTo(0,y0+document.documentElement.scrollHeight-h0);setTimeout(()=>{gl=false;},120);}},{passive:true});}
+
+const STO=[
+['🐻','Miś i dzban miodu','Miś znalazł dzban miodu, ale był za ciężki. Zawołał wiewiórkę i jeża. Razem zanieśli go pod dąb i każdy zjadł po łyżeczce. Okazało się, że wspólny miód smakuje najsłodziej.','Bajka'],
+['☁️','Chmurka Pimpek','Mała chmurka bała się spaść jako deszcz. „A jeśli zniknę?” — szeptała. Gdy w końcu spadła, na łące wyrósł kwiatek i uśmiechnął się do niej. Pimpek zrozumiała, że warto być odważną.','Bajka'],
+['🦊','Kto pyta, nie błądzi','Jeśli nie wiesz, którędy iść, zapytaj kogoś. Pytanie to nie wstyd, tylko mądrość! Dzięki pytaniom uczymy się najwięcej, a droga robi się krótsza.','Powiedzenie'],
+['🐢','Żółw i motyle','Żółw Tytus szedł tak wolno, że wszyscy go wyprzedzali. Ale on zauważył to, czego inni nie widzieli: tęczowe motyle, kroplę rosy i śpiewającego świerszcza. Powolna droga też bywa piękna.','Opowiadanie'],
+['⭐','Gwiazdka bez blasku','Maleńka gwiazdka myślała, że jej światło jest zbyt słabe. Gdy zgasły latarnie, jej blask pomógł wędrowcowi wrócić do domu. Każde światełko jest ważne.','Bajka'],
+['🐸','Parasolka dla mrówek','Żabka Zosia miała zieloną parasolkę. Gdy zaczął padać deszcz, pod jej parasolką schowało się dziesięć mrówek. Jej było trochę mokro, ale za to bardzo wesoło.','Historyjka'],
+['🧩','Zgubiony puzzel','Ola ułożyła cały obrazek z puzzli, ale jednego brakowało. Szukała pod stołem, za kanapą i w kapciach. Znalazł go kot — w swoim koszyku! Ola się zaśmiała i skończyła obrazek.','Historyjka'],
+['🐧','Pingwin Pik','Pingwin Pik nie lubił zimna, choć mieszkał na lodzie. Zamiast narzekać, zrobił z kolegami wielkie koło do przytulania. Od tego dnia nikomu nie było zimno.','Bajka'],
+['🍎','Jabłko nie pada daleko od jabłoni','Tak mówimy, gdy dziecko jest podobne do mamy albo taty, ma ten sam uśmiech albo lubi to samo. To piękne, ale i tak jesteś jedyny na świecie.','Powiedzenie'],
+['🚀','Kosmiczny kotek','Kotek Mruczek poleciał rakietą na Księżyc. Zamiast myszek znalazł tam srebrny kłębek wełny i bawił się nim do rana. Gdy wrócił, miał w futerku trochę gwiezdnego pyłu.','Bajka'],
+['🌻','Cierpliwy słonecznik','Nasionko słonecznika siedziało w ciemnej ziemi i pytało: „Kiedy urosnę?”. Ziemia odpowiadała: „Jeszcze trochę”. Aż pewnego ranka nasionko zobaczyło niebo. Cierpliwość to magiczna woda marzeń.','Bajka'],
+['🐘','Słoń, który nie umiał gwizdać','Słoń Franek próbował gwizdać, ale wychodziło mu tylko „fiuuu-trąąąb!”. Wszyscy w zoo tak się ucieszyli, że wybrali jego dźwięk na dzwonek na śniadanie. Bądź sobą, to Twój skarb.','Opowiadanie'],
+['🌈','Tęcza i szary dzień','W szare popołudnie dzieci zrobiły z kredek wielką tęczę na chodniku. Przechodnie uśmiechali się, a nawet pani listonosz zatańczyła. Kolory potrafią poprawić humor.','Historyjka'],
+['🧁','Babeczka z niespodzianką','Piekarz upiekł babeczkę i schował w środku karteczkę: „Uśmiechnij się”. Znalazła ją Zuzia i uśmiechała się cały dzień. Dobre słowo to najlepszy cukier.','Bajka'],
+['🐶','Piesek i zgubiony ogon','Piesek Bąbel szukał swojego ogona i kręcił się w kółko. „Gdzie on jest?!” — wołał. Dzieci z podwórka śmiały się: „Przecież macha za tobą!”. Czasem to, czego szukamy, mamy przy sobie.','Historyjka'],
+['🧙','Czarodziej od uśmiechów','W małym miasteczku mieszkał czarodziej, który nie znał żadnych zaklęć. Jego jedyną magią był uśmiech, którym witał każdego. Po tygodniu cała ulica uśmiechała się do siebie.','Bajka'],
+['🐌','Ślimak na górze','Ślimak Ignaś postanowił wejść na wysoką górę. Wspinał się cały rok, każdego dnia kawałeczek. Gdy dotarł na szczyt, zobaczył cały świat. Małe kroki zaprowadzą Cię daleko.','Opowiadanie'],
+['🌙','Księżyc mówi dobranoc','Gdy słońce zasypia, Księżyc zapala małe latarenki-gwiazdy. Każdej szepcze: „Pilnuj dzieci”. Dlatego, gdy zamkniesz oczy, ktoś nad Tobą czuwa. Dobranoc!','Bajka'],
+['🎈','Balonik Fik','Balonik Fik uciekł dziecku z rąk i poleciał wysoko. Zobaczył dachy, chmury i ptaki. Potem opadł na trawę, a pewien chłopiec zaniósł go do domu. Każda przygoda ma szczęśliwy koniec.','Bajka'],
+['🦋','Gąsienica marzy','Gąsienica Gucia patrzyła na motyle i wzdychała: „Ja też chciałabym latać”. Babcia liść szepnęła: „Najpierw trzeba się zdrzemnąć w kokonie”. Gdy Gucia się obudziła, miała skrzydła.','Bajka'],
+['🐠','Rybka Bąbelka','Rybka Bąbelka dmuchała bąbelki i każdy był inny. W jednym zobaczyła uśmiech, w drugim gwiazdę, a w trzecim własne odbicie. „Jestem piękna!” — powiedziała. I miała rację.','Historyjka'],
+['🐰','Marchewka na pół','Króliczek miał jedną marchewkę i był bardzo głodny. Przełamał ją na pół i większy kawałek dał siostrze. Siostra oddała mu połowę swojego. Tak powstały dwa pełne brzuszki.','Opowiadanie'],
+['🧸','Miś, który się nie bał','Miś Staś bał się ciemności. Aż pewnej nocy zauważył, że w ciemności świecą jego oczy i dwa świetliki. „Nie jestem sam!” — wykrzyknął. Strach zniknął jak mydlana bańka.','Bajka'],
+['⛵','Łódka z papieru','Staś złożył łódkę z papieru i puścił ją po kałuży. Łódka płynęła, aż dopłynęła do brzegu. „Koniec podróży?” — spytał. „Nie, to dopiero początek wyobraźni!” — odpowiedział tata.','Historyjka'],
+['🎨','Kolory się pokłóciły','Czerwony powiedział: „Jestem najważniejszy!”, niebieski: „Nie, ja!”. Wtedy na kartce zrobiło się szaro. Dopiero gdy się pogodziły, powstał kolorowy świat. Razem wyglądają najpiękniej.','Bajka'],
+['🌳','Drzewo i ptaki','Stare drzewo było smutne, bo miało tylko liście. Przyleciały ptaki i uwiły gniazda. Teraz drzewo śpiewało razem z nimi. Czasem szczęście przylatuje samo, wystarczy otworzyć gałęzie.','Bajka'],
+['🚲','Rower Tomka','Tomek uczył się jeździć na rowerze i dziesięć razy się przewrócił. Za jedenastym razem pojechał! „Dlaczego mi się udało?” — spytał. „Bo spróbowałeś jeszcze raz” — odpowiedział tata.','Opowiadanie'],
+['🦔','Jeż i jabłka','Jeż Kolczatek niósł na kolcach jabłka dla całej rodziny. Gdy zgubił jedno, zaśmiał się: „To dla wiewiórki!”. Tak powstała najsmaczniejsza przyjaźń w lesie.','Bajka'],
+['🍀','Czterolistna koniczyna','Ania szukała czterolistnej koniczyny cały wieczór. Nie znalazła, ale po drodze zebrała bukiet stokrotek. „To też szczęście!” — uśmiechnęła się. Szczęście bywa blisko, tylko inaczej wygląda.','Opowiadanie'],
+['🕊️','Gołąbek z listem','Gołąbek niósł list do babci i bardzo się spieszył. Na drodze spotkał zmęczoną biedronkę, więc zwolnił i podwiózł ją kawałek. Obie dotarły na czas, a babcia dostała dwie niespodzianki.','Bajka'],
+['🐞','Biedronka w kropki','Biedronka Kropka miała siedem kropek i policzyła je wszystkie: „Raz, dwa, trzy...”. Gdy się pomyliła, policzyła jeszcze raz. Tak działa matematyka: jak błąd, to próbujemy dalej!','Historyjka'],
+['🥕','Marchewkowy ogród','Pan Wojtek zasadził marchewki i codziennie z nimi rozmawiał. Marchewki rosły najpiękniejsze w okolicy. Czy to magia? Może po prostu dobroć i woda.','Opowiadanie'],
+['🌊','Fala i muszelka','Fala przyniosła na brzeg muszelkę. „Nikt mnie tu nie zna” — westchnęła muszelka. Dziewczynka podniosła ją i przyłożyła do ucha. „Słyszę morze!” — wykrzyknęła. Muszelka poczuła się ważna.','Bajka'],
+['🏰','Zamek z piasku','Na plaży dzieci zbudowały zamek z piasku. Przyszła fala i zabrała wieżę. „Zbudujmy nową!” — zawołały. Nowa wyszła jeszcze wyższa. Nie poddawaj się, gdy coś się zepsuje.','Historyjka'],
+['🐉','Smok, który bał się ognia','Smok Dymek bał się własnego ognia, więc zionął tylko bańkami mydlanymi. Dzieci pokochały go za to. W końcu nauczył się zionąć małe ogniska do pieczenia pyszności na pikniku.','Bajka'],
+['🐿️','Wiewiórka Zuzia','Wiewiórka Zuzia zapomniała, gdzie schowała orzechy. Ale tam, gdzie zakopała jeden, wyrósł dąb! Czasem zapominając, tworzymy coś większego.','Opowiadanie'],
+['🎵','Muzykalna konewka','Konewka w ogrodzie śpiewała, kiedy podlewała kwiaty. Kwiaty rosły szybciej, bo lubiły muzykę. Sąsiedzi pytali: „Jak to robicie?”. „Śpiewamy!” — odpowiadał ogród.','Bajka'],
+['🧦','Skarpetka bez pary','Pewna skarpetka zgubiła swoją parę i bardzo się martwiła. Wtedy dziewczynka założyła ją na rękę i zrobiła z niej pacynkę. Teraz skarpetka opowiada bajki i jest najszczęśliwsza.','Historyjka'],
+['🍄','Grzybek-parasolek','Mały grzybek schował pod kapeluszem pięć mrówek, gdy zaczęło padać. „Ale tłok!” — śmiały się. Gdy wyszło słońce, mrówki podarowały grzybkowi kroplę rosy.','Bajka'],
+['🦒','Żyrafa i wysoki problem','Żyrafa Gigi zawsze patrzyła wysoko. Schyliła szyję i zobaczyła malutkiego żuczka z wielkim uśmiechem. Warto patrzeć i w górę, i w dół.','Opowiadanie'],
+['🌷','Tulipan w zimie','Cebulka tulipana zasnęła w ziemi jesienią. „Obudźcie mnie, gdy będzie ciepło” — poprosiła. Wiosną usłyszała ptaki i wystawiła różowy kielich. Czasem trzeba po prostu odpocząć.','Bajka'],
+['🐙','Ośmiornica i kapcie','Ośmiornica miała osiem nóg i ani jednego kapcia. „Jak je kupię? Potrzebuję ośmiu!” — martwiła się. Krab zrobił jej osiem kapci z muszelek. Każdy problem ma swojego pomocnika.','Historyjka'],
+['☃️','Bałwanek Bruno','Bałwanek Bruno bardzo bał się słońca. Gdy wiosną zaczął się topić, powiedział: „Nie szkodzi, zamienię się w wodę i napoję kwiaty”. Tak Bruno został wiosennym kwiatkiem.','Bajka'],
+['🤝','Co dwie głowy, to nie jedna','Czasem nie możemy rozwiązać zadania sami. Wtedy warto zapytać kolegę, a wspólnie pomysł przychodzi szybciej. Razem łatwiej o dobry pomysł!','Powiedzenie'],
+['🪙','Nie wszystko złoto, co się świeci','Nie każda błyszcząca rzecz jest cenna. Najważniejsze rzeczy, jak przyjaźń i uśmiech, wcale się nie błyszczą, a są najcenniejsze.','Powiedzenie'],
+['🍰','Bez pracy nie ma kołaczy','To znaczy: żeby zjeść pyszny kołacz, trzeba najpierw upiec ciasto! Jeśli chcemy coś osiągnąć, musimy się trochę postarać. Ty już to robisz, brawo!','Powiedzenie'],
+['🐦','Lepszy wróbel w garści','„Lepszy wróbel w garści niż gołąb na dachu” — mówimy, gdy cieszymy się z tego, co mamy, zamiast ciągle chcieć więcej. Uśmiechnij się do tego, co masz dziś.','Powiedzenie'],
+['💧','Kropla drąży skałę','Jedna kropla wody jest malutka, ale kropla po kropli potrafi zrobić dziurę w skale. Podobnie z nauką: każdego dnia po troszku, a zajdziesz wysoko.','Powiedzenie'],
+['💪','Ćwiczenie czyni mistrza','Każdy mistrz kiedyś nie umiał. Piłkarze ćwiczyli kopanie, pianiści grali gamy. Jeśli ćwiczysz codziennie, też zostaniesz mistrzem w swojej dziedzinie.','Powiedzenie'],
+['🪄','Dobre słowo nic nie kosztuje','„Dziękuję”, „proszę”, „przepraszam” to magiczne słowa, które nic nie kosztują, a robią wiele dobrego. Spróbuj dziś użyć ich trzy razy!','Powiedzenie'],
+['🪑','Zagadka o stole','Ma cztery nogi, ale nigdzie nie idzie. Stoi w kuchni i czeka na obiad. Co to takiego? Odpowiedź: stół!','Zagadka'],
+['🕰️','Zagadka o zegarze','Ma tarczę, ale nie jest rycerzem. Ma wskazówki, ale nie jest nauczycielem. Pokazuje, kiedy iść spać. Co to? Odpowiedź: zegar!','Zagadka'],
+['🕳️','Zagadka o dziurze','Im więcej z niej zabierasz, tym większa się staje. Co to takiego? Odpowiedź: dziura!','Zagadka'],
+['🎹','Zagadka o pianinie','Ma klawisze, ale nie otwiera drzwi. Gra, ale nie jest aktorem. Co to? Odpowiedź: pianino!','Zagadka'],
+['☔','Zagadka o parasolu','Gdy pada, otwieram go nad głową. Nie jest dachem, a chroni przed deszczem. Co to? Odpowiedź: parasol!','Zagadka'],
+['🌬️','Zagadka o wietrze','Nie ma rąk, a porusza liśćmi. Nie ma nóg, a pędzi przez pola. Nikt go nie widzi, ale słychać go w koronach drzew. Co to? Odpowiedź: wiatr!','Zagadka'],
+['🎒','Pierwszy dzień w szkole','Kuba bardzo bał się pierwszego dnia w szkole. Ale gdy rozejrzał się po klasie, zobaczył, że wszyscy są trochę zdenerwowani. Uśmiechnął się do kolegi i od razu poczuł się lepiej.','Opowiadanie'],
+['🧶','Babcia i kłębek','Babcia robiła na drutach szalik. Kotek zaplątał się w kłębek i zrobił z niego wielki warkocz. „To nowy wzór!” — zaśmiała się babcia i dorobiła do szalika kocie uszy.','Historyjka'],
+['🎩','Kapelusz na wietrze','Wiatr porwał kapelusz Wojtka. Biegł za nim przez park i spotkał nowego kolegę, który kapelusz złapał. Tak zaczęła się przyjaźń. Czasem strata prowadzi do znajomości.','Opowiadanie'],
+['🌟','Wieczorne życzenie','Zamknij oczy i pomyśl o trzech dobrych rzeczach, które dziś Cię spotkały. Może to był śmiech, pyszne jedzenie albo przytulas? Teraz powiedz w myślach: „Dziękuję”. Dobranoc!','Opowiadanie'],
+['🐳','Wieloryb i mała łódka','Mała łódka płynęła przez wielkie morze i się bała. Pod nią wypłynął wieloryb i poniósł ją na grzbiecie. „Dziękuję!” — zawołała łódka. „Przyjaciele są po to, żeby się wspierać” — zabulgotał wieloryb.','Bajka'],
+['🐜','Mrówka i ziarnko','Mrówka Marysia niosła ziarnko dwa razy większe od siebie. Wszyscy się dziwili, że daje radę. „Idę po trochu” — odpowiedziała. Wielkie rzeczy można zrobić małymi krokami.','Bajka'],
+['🍓','Truskawkowy dzień','Basia zjadła truskawkę i powiedziała: „Pyszna!”. Mama zapytała: „Czy ją umyłaś?”. „Oczywiście, żeby żadne bakterie nie bolały brzuszka!” — zaśmiała się Basia. Mycie owoców to mądry nawyk.','Historyjka'],
+['🌍','Wielka Ziemia','Ziemia jest wielka, a wszyscy mieszkamy na jednej planecie. Gdy sprzątamy po sobie, dbamy o wspólny dom. Dziś możesz podnieść jedną rzecz z ziemi i wrzucić do kosza. To mała zmiana, która pomaga naturze.','Opowiadanie'],
+['🐝','Pszczółka Ela','Pszczółka Ela zbierała nektar z tysiąca kwiatów. „Po co tyle pracy?” — pytały motyle. „Żeby powstał miód dla was wszystkich!” — odpowiedziała Ela. Dobra praca daje słodkie owoce.','Bajka'],
+['🦁','Lew, który ryczał cichutko','Lew Leon miał tak głośny ryk, że wszyscy się chowali. Postanowił więc ryczeć cichutko przed snem. Od tego dnia w całej sawannie spało się spokojnie.','Bajka'],
+['🥄','Łyżeczka i kubek','Łyżeczka zawsze zazdrościła kubkowi, że jest taki duży. Ale gdy trzeba było zamieszać kakao, kubek nie dał rady sam. „Potrzebujemy się nawzajem!” — powiedział. I wypili kakao razem.','Bajka'],
+['🐴','Konik na biegunach','Konik na biegunach marzył, żeby pobiec prawdziwym galopem. Zosia siadała na nim co wieczór i opowiadała mu o łąkach. W jej bajkach konik zawsze był najszybszy na świecie.','Historyjka']
+];
+
+/* ===== BAJKI W CHMURCE ===== */
+function stSnd(k){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.resume)AC.resume();const t0=AC.currentTime;
+const tone=(f,t,d,ty,v,f2)=>{const o=AC.createOscillator(),g=AC.createGain();o.type=ty||'sine';o.frequency.setValueAtTime(f,t0+t);if(f2)o.frequency.exponentialRampToValueAtTime(f2,t0+t+d);g.gain.setValueAtTime(.0001,t0+t);g.gain.exponentialRampToValueAtTime(v||.15,t0+t+.015);g.gain.exponentialRampToValueAtTime(.0001,t0+t+d);o.connect(g);g.connect(AC.destination);o.start(t0+t);o.stop(t0+t+d+.03);};
+if(k==='open'){tone(260,0,.24,'sine',.2,780);[523,659,784,1047,1319].forEach((f,i)=>tone(f,.14+i*.085,.38,'triangle',.1));tone(2349,.6,.3,'sine',.05);tone(1760,.66,.3,'sine',.04);}
+else if(k==='lock'){tone(440,0,.16,'triangle',.11);tone(330,.13,.22,'triangle',.1);tone(262,.27,.3,'sine',.09);}
+else{const n=Math.floor(AC.sampleRate*.5),buf=AC.createBuffer(1,n,AC.sampleRate),d=buf.getChannelData(0);for(let i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,2);const src=AC.createBufferSource();src.buffer=buf;const fl=AC.createBiquadFilter();fl.type='lowpass';fl.frequency.setValueAtTime(3200,t0);fl.frequency.exponentialRampToValueAtTime(350,t0+.45);const g=AC.createGain();g.gain.value=.28;src.connect(fl);fl.connect(g);g.connect(AC.destination);src.start(t0);tone(1100,0,.3,'sine',.07,360);tone(1568,.05,.22,'triangle',.05,880);}
+}catch(e){}}
+let stEl=null,stBusy=false;
+function stParticles(kind){const o=stEl;if(!o)return;const cols=kind==='out'?['#FFFFFF','#E6F3FF','#FFF4C2','#FFE0F0','#DFF7EA']:['#FFFFFF','#FFF4C2','#FFD6EC','#D6ECFF'],sp=['✨','⭐','💫','✦'];let h='';
+const n=kind==='out'?16:10;for(let i=0;i<n;i++){const a=Math.random()*Math.PI*2,r=(kind==='out'?90:120)+Math.random()*110,w=(kind==='out'?34:14)+Math.random()*(kind==='out'?44:16);h+=`<i class="pf" style="--dx:${Math.round(Math.cos(a)*r)}px;--dy:${Math.round(Math.sin(a)*r-(kind==='out'?30:0))}px;--w:${Math.round(w)}px;--s:${(kind==='out'?1.7:1.3).toFixed(1)};--c:${P(cols)};--d:${(Math.random()*.18).toFixed(2)}s"></i>`;}
+for(let i=0;i<9;i++){const a=Math.random()*Math.PI*2,r=100+Math.random()*130;h+=`<b class="stsp" style="--dx:${Math.round(Math.cos(a)*r)}px;--dy:${Math.round(Math.sin(a)*r)}px;--d:${(Math.random()*.25).toFixed(2)}s;--r:${R(-90,90)}deg">${P(sp)}</b>`;}
+const d=document.createElement('div');d.className='stps';d.innerHTML=h;o.appendChild(d);setTimeout(()=>d.remove(),1400);}
+function stClose(now){const o=stEl;if(!o||stBusy)return;if(now){o.remove();stEl=null;return;}stBusy=true;o.classList.add('out');stSnd('puff');stParticles('out');setTimeout(()=>{if(stEl===o){o.remove();stEl=null;}stBusy=false;},760);}
+function stOpen(L){if(stEl)stClose(true);stBusy=false;const t=sv.t,need=L*LP,un=t>=need,s=STO[L%STO.length],shape=['cloud','sun','bubble','night'][L%4];
+const title=un?s[1]:'Bajka czeka na Ciebie',em=un?s[0]:'🔒',kind=un?s[3]:'Niespodzianka',text=un?s[2]:`Zdobądź jeszcze ${need-t} pkt, a odkryjesz bajkę z poziomu ${L+1}!`;
+let bumps='';if(shape==='cloud'||shape==='night'){for(let i=0;i<6;i++){const w=54+R(0,34);bumps+=`<i class="stcb" style="left:${4+i*17+R(-2,3)}%;top:${-Math.round(w*.55)}px;width:${w}px;height:${w}px"></i>`;}for(let i=0;i<6;i++){const w=50+R(0,34);bumps+=`<i class="stcb" style="left:${6+i*16+R(-2,3)}%;bottom:${-Math.round(w*.5)}px;width:${w}px;height:${w}px"></i>`;}}
+let deco='';if(shape==='sun')deco='<i class="ry"></i>';if(shape==='night'){for(let i=0;i<14;i++)deco+=`<i class="ns" style="left:${R(6,94)}%;top:${R(6,92)}%;animation-delay:${(Math.random()*2).toFixed(1)}s"></i>`;deco+='<b class="mn">🌙</b>';}if(shape==='bubble')deco='<i class="bh"></i><i class="bh b2"></i>';
+const o=document.createElement('div');o.className='stov';o.setAttribute('role','dialog');o.setAttribute('aria-label',title);
+o.innerHTML=`<div class="stbd" data-st="x"></div><div class="stw sh-${shape}"><div class="stbm">${bumps}</div>${deco}<div class="stc"><div class="ste">${em}</div><div class="stk">${esc(kind)}</div><div class="stti">${esc(title)}</div><div class="stxt${text.length>150?' sm':''}">${esc(text)}</div><button class="stbtn" data-st="x">${un?'Super! ⭐':'Dobrze! 💛'}</button></div></div>`;
+o.addEventListener('click',e=>{if(e.target.closest('[data-st]'))stClose();});document.body.appendChild(o);stEl=o;stSnd(un?'open':'lock');stParticles('in');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')stClose();});
+
 function render(){let h=header(),su=SU[S.su],sg=su&&su.s[S.sg];
 if(S.v==='home')h+=`<div class="grid">${oIdx('home',SU.map(s=>s.id)).map(i=>{const s=SU[i];return `<button class="tile" style="--c:${s.c}" data-a="su" data-i="${i}" data-og="home" data-ok="${esc(s.id)}"><span class="em">${s.e}</span>${s.n}</button>`}).join('')}</div><div class="xhn">💡 Przytrzymaj kafelek 2 sekundy i przeciągnij, aby zmienić kolejność</div>`;
 else if(S.v==='su')h+=top(su.n)+`<div class="grid">${oIdx('s'+su.id,su.s.map(s=>s[0]+'|'+s[1])).map((i,j)=>{const s=su.s[i];return `<button class="tile" style="--c:${CO[j%7]}" data-a="sg" data-i="${i}" data-og="s${su.id}" data-ok="${esc(s[0]+'|'+s[1])}"><span class="em">${s[2]}</span>${s[1]}</button>`}).join('')}</div><div class="xhn">💡 Przytrzymaj kafelek 2 sekundy i przeciągnij, aby zmienić kolejność</div>`;
@@ -957,7 +1150,8 @@ else if(S.v==='res')h+=res();
 else if(S.v==='col')h+=colv();
 else if(S.v==='puz')h+=pzList();else if(S.v==='pzp')h+=pzPlay();else if(S.v==='pzq')h+=pzAsk();
 else if(S.v==='chess')h+=chessv();
-document.getElementById('app').innerHTML=h;}
+else if(S.v==='gift')h+=giftv();
+h+=navbar();document.body.classList.toggle('gf',S.v==='gift');document.body.classList.toggle('nb',NAVV.includes(S.v));document.getElementById('app').innerHTML=h;giftAfter();}
 function play(){const su=SU[S.su],q=S.qs[S.i],L=S.m==='l',n=S.qs.length;
 let d='<div class="dots">'+S.qs.map((x,i)=>`<b class="${i<S.i?(S.rs[i]?'y':'n'):i===S.i?'c':''}"></b>`).join('')+'</div>';
 let b=`<div class="card"><div class="qline"><button class="spk" data-a="say" data-w="${esc(q.w||qsp(q))}" data-lang="${q.w?'en-US':'pl-PL'}" aria-label="Odsłuchaj pytanie">🔊</button><div class="q">${esc(q.p)}</div></div>${L&&q.lbig?q.lbig:q.big}</div>`;
@@ -1002,10 +1196,13 @@ const PAL2=[['#FFE066','#FFA928'],['#FFB3D1','#EC4899'],['#A5CCFF','#3B82F6'],['
 function mascot(){const c=P(PAL2);return`<svg viewBox="0 0 200 200" aria-hidden="true"><defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c[0]}"/><stop offset="1" stop-color="${c[1]}"/></linearGradient></defs><polygon points="100.0,14.0 127.0,64.8 183.7,74.8 143.7,116.2 151.7,173.2 100.0,148.0 48.3,173.2 56.3,116.2 16.3,74.8 73.0,64.8" fill="url(#mg)" stroke="url(#mg)" stroke-width="16" stroke-linejoin="round"/><polygon points="100.0,14.0 127.0,64.8 183.7,74.8 143.7,116.2 151.7,173.2 100.0,148.0 48.3,173.2 56.3,116.2 16.3,74.8 73.0,64.8" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="3" stroke-linejoin="round" transform="translate(100 102) scale(.9) translate(-100 -102)"/><ellipse cx="72" cy="66" rx="12" ry="7" fill="#fff" fill-opacity=".6" transform="rotate(-35 72 66)"/><path d="M68 104Q78 90 88 104M112 104Q122 90 132 104" fill="none" stroke="#4A2C00" stroke-width="6" stroke-linecap="round"/><path d="M80 120Q100 144 120 120Z" fill="#7A2E2E" stroke="#4A2C00" stroke-width="5" stroke-linejoin="round"/><path d="M90 130Q100 138 110 130Q100 126 90 130Z" fill="#FF8FA3"/><ellipse cx="62" cy="122" rx="9" ry="6" fill="#FF6F91" fill-opacity=".7"/><ellipse cx="138" cy="122" rx="9" ry="6" fill="#FF6F91" fill-opacity=".7"/></svg>`;}
 function pop(){const o=document.createElement('div');o.className='ov';o.innerHTML=`<div class="pw">${mascot()}<div class="rb">${P(PR)}</div></div>`;document.body.appendChild(o);setTimeout(()=>o.remove(),950);burst(14);}
 function burst(n){const E2=['⭐','🌟','✨','🎉','💖','🎈'];for(let i=0;i<n;i++){const e=document.createElement('span');e.className='bu';e.textContent=P(E2);e.style.left='50%';e.style.top='45%';e.style.setProperty('--x',R(-160,160)+'px');e.style.setProperty('--y',R(-220,120)+'px');document.body.appendChild(e);setTimeout(()=>e.remove(),1400);}}
-function build(g,l,n){const q=[],seen=new Set();let t=0;while(q.length<n&&t++<400){const x=g(l===null?R(0,1):l);if(x.k!==undefined&&seen.has(x.k))continue;seen.add(x.k);q.push(x);}if(!q.length)q.push(g(l===null?R(0,1):l));return q;}
+function build(g,l,n){const q=[],seen=new Set(),dv=!!(SU[S.su]&&SU[S.su].id==='mat'),ac={},dc={},dd=a=>new Set(String(a).replace(/\D/g,'').split('').filter(Boolean));let t=0;
+while(q.length<n&&t++<400){let best=null,bs=1e9;for(let j=0;j<(dv?8:1);j++){const x=g(l===null?R(0,1):l);if(x.k!==undefined&&seen.has(x.k))continue;let sc=0;if(dv){const a=String(x.a==null?'':x.a);sc=(ac[a]||0)*6;dd(a).forEach(d=>{sc+=(dc[d]||0);});}if(sc<bs){bs=sc;best=x;}}
+if(!best)continue;seen.add(best.k);if(dv){const a=String(best.a==null?'':best.a);ac[a]=(ac[a]||0)+1;dd(a).forEach(d=>{dc[d]=(dc[d]||0)+1;});}q.push(best);}
+if(!q.length)q.push(g(l===null?R(0,1):l));return q;}
 function point(ok){snd(ok);S.rs[S.i]=ok;if(ok){S.sc++;const op=sv.t%LP;if(gain(1))setTimeout(()=>cel(op),800);pop();const i=S.i;setTimeout(()=>{if(S.v==='play'&&S.i===i&&S.sel!==null)act('next',{});},1250);}}
 const RID=(su,k)=>su.id==='zag'||(su.id==='spo'&&k==='zag')||(su.id==='car'&&k==='zn');
-const DP={home:0,su:1,art:1,puz:1,hub:2,col:2,pzp:2,pzq:2,chess:2,play:3,res:3};
+const DP={home:0,su:1,art:1,puz:1,gift:1,hub:2,col:2,pzp:2,pzq:2,chess:2,play:3,res:3};
 function act(a,d){const su=SU[S.su],pv=S.v;
 if(a==='su'){S.su=+d.i;const id=SU[S.su].id;S.v=id==='art'?'art':id==='puz'?'puz':'su';}
 else if(a==='sg'){S.sg=+d.i;const k=su.s[S.sg][0];if(RID(su,k)){S.ri=true;S.l=null;S.m='t';S.qs=build(su.s[S.sg][3],null,TL);S.i=0;S.sc=0;S.sel=null;S.bt=[];S.ty='';iq();S.rs=[];S.v='play';}else{S.ri=false;S.v=(su.id==='sza'&&(k==='pz'||k==='gm'))?'chess':'hub';if(S.v==='chess')chInit(k);}}
@@ -1014,6 +1211,10 @@ else if(a==='pick'){if(S.sel!==null)return;const q=S.qs[S.i];S.sel=+d.i;point(q.
 else if(a==='let'){const q=S.qs[S.i];if(S.sel!==null||S.bt.length>=q.a.length)return;S.bt.push(+d.i);if(S.bt.length===q.a.length){const ok=S.bt.map(i=>q.o[i]).join('')===q.a;S.sel=ok?1:0;point(ok);}}
 else if(a==='key'){const q=S.qs[S.i];if(S.sel!==null)return;if(q.two){const f=S.tf==='g'?'ty2':'ty',mx=S.tf==='g'?2:3;if(d.k==='del')S[f]=S[f].slice(0,-1);else if(d.k==='ok'){if(!S.ty&&!S.ty2)return;const ok=(+S.ty||0)*100+(+S.ty2||0)===q.cents;S.sel=ok?1:0;point(ok);}else if(S[f].length<mx)S[f]+=d.k;}else if(d.k==='del')S.ty=S.ty.slice(0,-1);else if(d.k==='ok'){if(!S.ty)return;const ok=S.ty===q.a;S.sel=ok?1:0;point(ok);}else if(S.ty.length<6)S.ty+=d.k;}
 else if(a==='tf'){S.tf=d.f==='g'?'g':'z';}
+else if(a==='tab'){if(d.t==='gift'){if(S.v!=='gift'){S.v='gift';S.gfx=true;S.gt=null;}}else if(S.v!=='home'){if(DP[S.v]>0){history.back();return;}S.v='home';window.scrollTo(0,0);}}
+else if(a==='gn'){const n=+d.i;S.gt=S.gt===n?null:n;if(Math.floor(sv.t/LP*10)>=0){}}
+else if(a==='gc'){S.gcw=+d.i;stOpen(+d.i);}
+else if(a==='gb'){stOpen(+d.i);}
 else if(a==='kw'){S.kw=d.w;}
 else if(a==='kchk'){const q=S.qs[S.i];if(S.sel!==null)return;const ok=S.kh===q.h&&S.km===q.m;S.sel=ok?1:0;point(ok);}
 else if(a==='ml'){if(S.sel===null&&!S.mt.includes(+d.i))S.ms=+d.i;}
@@ -1042,7 +1243,7 @@ else if(a==='part'){const p=PIC[S.pi];S.fl[d.i]=S.cc;if(p.p.every((_,i)=>S.fl[i]
 else if(a==='clr')S.fl={};
 else if(a==='pzo'){pzNew(+d.n,+d.i);S.v='pzp';}else if(a==='pzc')pzTap(+d.p);else if(a==='pzr')pzNew(S.pz.n,S.pz.i,S.pz.custom?S.pzc:null);else if(a==='pzn'){pzNew(+d.n,-1,S.pzc);S.v='pzp';}else if(a==='pzv')S.pz.pv=!S.pz.pv;
 if(DP[S.v]>DP[pv])try{history.pushState({d:DP[S.v]},'');}catch(e){}
-render();if(!['pzc','pzv','pzr','cs','cpr','cset','chint','cundo','cres','csol','pick','let','undo','part','pal','clr','key','ml','mr','di','db','kw','kchk','tf'].includes(a))window.scrollTo(0,0);}
+render();if(!['pzc','pzv','pzr','cs','cpr','cset','chint','cundo','cres','csol','pick','let','undo','part','pal','clr','key','ml','mr','di','db','kw','kchk','tf','tab','gn','gc','gb'].includes(a))window.scrollTo(0,0);}
 window.addEventListener('popstate',()=>{if(S.v==='chess'&&CH.m!=='gm'&&CH.pz&&CH.pz.i!==null){CH.pz={i:null};render();window.scrollTo(0,0);return;}const a=SU[S.su]&&SU[S.su].id==='art';S.v=S.v==='play'||S.v==='res'?(S.ri?'su':'hub'):S.v==='hub'?(a?'art':'su'):S.v==='col'?'art':(S.v==='pzp'||S.v==='pzq')?'puz':S.v==='chess'?'su':'home';render();window.scrollTo(0,0);});
 try{history.replaceState({d:0},'');}catch(e){}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b)act(b.dataset.a,b.dataset);});
