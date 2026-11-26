@@ -300,13 +300,18 @@ h2{margin:0;font-size:1.5rem;flex:1}
 .qcs{text-align:center;font-size:.9rem;color:var(--mut)}
 .qcn2{text-align:center;font-weight:700;color:#0F6B3A;background:#DDF5E7;border-radius:14px;padding:6px 10px;font-size:.95rem}
 .chps{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}.chp{background:var(--bg);border:1px solid var(--ln);border-radius:99px;padding:2px 10px;font-size:.85rem}
+.sbtn{flex:1;min-width:150px;background:#3B82F6;color:#fff;border-radius:18px;padding:12px 16px;font-weight:700;box-shadow:0 5px 0 rgba(0,0,0,.25);text-align:center}
+.sbtn.g{background:#22B573}.sbtn:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.25)}
+.sbr{display:flex;gap:10px;flex-wrap:wrap}
+.smsg{border-radius:14px;padding:8px 12px;font-size:.95rem;font-weight:700;text-align:center}
+.smsg.ok{background:#DDF5E7;color:#0F6B3A}.smsg.no{background:#FFE6E3;color:#B3302A}
 </style></head><body><div id="app"></div>
 <script>
 (function(){'use strict';
 const K='quiz-wiedzy-v2',TL=10,LP=100;
 const sv={t:0,b:{},img:{},nb:{},pz:0,pp:0,cp:0};
 try{const o=JSON.parse(localStorage.getItem(K)||'null');if(o&&typeof o.t==='number'){sv.t=o.t;sv.b=o.b||{};sv.img=o.img||{};sv.nb=o.nb||{};sv.pz=o.pz|0;sv.pp=o.pp|0;sv.cp=o.cp|0;sv.st=o.st||{};}}catch(e){}
-const ps=()=>{try{localStorage.setItem(K,JSON.stringify(sv));}catch(e){}};
+const ps=()=>{if(window.__qmImp)return;try{localStorage.setItem(K,JSON.stringify(sv));}catch(e){}};
 const sti=()=>{const z=sv.st||(sv.st={});z.tm=+z.tm||0;z.tc=z.tc||{};z.ok=z.ok|0;z.no=z.no|0;z.c=z.c||{};z.s=z.s||{};z.tt=z.tt|0;z.bs=z.bs|0;z.cs=z.cs|0;z.d=z.d||{};z.da=z.da||{};z.se=z.se|0;z.qc=z.qc|0;return z;};
 sti().se++;
 {let c=0;const M13={mt:'mz'},M46={cm:'cm4',dg:'dg4',mt:'mt4',ts:'ts4'};for(const k of Object.keys(sv.b)){const m=k.match(/^(pl13|pl46)\.([^.]+)\.(.*)$/);if(!m)continue;const id=(m[1]==='pl13'?M13:M46)[m[2]]||m[2],nk='pol.'+id+'.'+m[3];if(sv.b[nk]===undefined||sv.b[nk]<sv.b[k])sv.b[nk]=sv.b[k];delete sv.b[k];c=1;}if(c)ps();}
@@ -1540,8 +1545,26 @@ const days=[6,5,4,3,2,1,0].map(i=>[new Date(Date.now()-i*864e5).getDay(),z.d[dke
 h+=`<div class="stsec">📅 Ostatnie 7 dni</div><div class="stc"><div class="wk">${days.map(x=>`<div><span>${x[1]?(x[1]<60?'<1':Math.round(x[1]/60)):''}</span><i style="height:${Math.round(x[1]/dm*86)}px"></i><span>${WN[x[0]]}</span></div>`).join('')}</div><div class="qcs">minuty spędzone w aplikacji każdego dnia</div></div>`;
 const sE=Object.entries(z.s).filter(e=>e[1][0]+e[1][1]>0).sort((a,b)=>(b[1][0]+b[1][1])-(a[1][0]+a[1][1])).slice(0,5);
 if(sE.length)h+=`<div class="stsec">🔝 Najczęściej ćwiczone quizy</div><div class="stc">${sE.map(([k,v])=>{const j=k.indexOf('.'),su=SU.find(x=>x.id===k.slice(0,j)),sg=su&&su.s.find(x=>x[0]===k.slice(j+1));if(!sg)return '';return `<div class="br"><span>${sg[2]} ${esc(sg[1])}</span><div class="bt"><i style="width:${v[0]/(v[0]+v[1])*100}%;background:#22B573"></i><i style="width:${v[1]/(v[0]+v[1])*100}%;background:#FF5A5F"></i></div><b>${v[0]+v[1]}</b></div>`;}).join('')}</div>`;
-h+=`<div class="stsec">📚 Pytania w aplikacji</div><div class="stc" id="qcnt">${qcHtml()}</div>`;
+h+=`<div class="stsec">💾 Kopia zapasowa</div><div class="stc"><div class="qcs" style="text-align:left">Zapisz wyniki, osiągnięcia, statystyki, obrazki i ustawienia (układ kafelków) do pliku albo wczytaj je z pliku, np. na innym telefonie lub po wyczyszczeniu przeglądarki.</div><div class="sbr"><button class="sbtn" data-a="exp">⬇️ Eksportuj do pliku</button><button class="sbtn g" data-a="imp">⬆️ Importuj z pliku</button></div>${S.imsg?`<div class="smsg ${S.imsg.ok?'ok':'no'}">${esc(S.imsg.t)}</div>`:''}<div class="qcs" style="text-align:left">Import zastępuje obecne wyniki zawartością pliku. Przed wczytaniem zapytam o potwierdzenie.</div></div>
+<div class="stsec">📚 Pytania w aplikacji</div><div class="stc" id="qcnt">${qcHtml()}</div>`;
 return h;}
+
+/* ===== KOPIA ZAPASOWA: eksport / import ===== */
+const QI=document.createElement('input');QI.type='file';QI.accept='.json,application/json';QI.style.display='none';document.body.appendChild(QI);
+function qmData(){ps();return{app:'quiz-madrala',v:1,at:new Date().toISOString(),data:{[K]:JSON.stringify(sv),[MK]:localStorage.getItem(MK)||'{}',[ORK]:JSON.stringify(ORD)}};}
+function qmExport(){try{const s=JSON.stringify(qmData()),u=URL.createObjectURL(new Blob([s],{type:'application/json'})),a=document.createElement('a');a.href=u;a.download='quiz-madrala-kopia-'+dkey()+'.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),5000);S.imsg={ok:1,t:'✅ Zapisano kopię ('+Math.max(1,Math.round(s.length/1024))+' KB). Sprawdź folder Pobrane.'};}catch(e){S.imsg={ok:0,t:'❌ Nie udało się zapisać pliku.'};}}
+function qmPick(){QI.value='';QI.click();}
+function qmImport(text,ask){let o;try{o=JSON.parse(text);}catch(e){return{ok:0,t:'❌ To nie jest poprawny plik kopii (nie udało się go odczytać).'};}
+if(!o||o.app!=='quiz-madrala'||!o.data||typeof o.data[K]!=='string')return{ok:0,t:'❌ Ten plik nie wygląda na kopię Quizu Mądrala.'};
+let d,im=null,od=null;try{d=JSON.parse(o.data[K]);}catch(e){}
+if(!d||typeof d.t!=='number'||typeof d.b!=='object')return{ok:0,t:'❌ W pliku brakuje poprawnych wyników.'};
+if(typeof o.data[MK]==='string'){try{const x=JSON.parse(o.data[MK]);if(x&&typeof x==='object')im=o.data[MK];}catch(e){}}
+if(typeof o.data[ORK]==='string'){try{const x=JSON.parse(o.data[ORK]);if(x&&typeof x==='object')od=o.data[ORK];}catch(e){}}
+const z=d.st||{},when=o.at&&!isNaN(new Date(o.at))?new Date(o.at).toLocaleString('pl-PL'):'nieznana data';
+if(!ask(`Zastąpić obecne wyniki kopią z pliku?\n\nKopia z: ${when}\nPunkty: ${d.t}\nOdpowiedzi: ${(z.ok|0)+(z.no|0)}\nCzas w aplikacji: ${fmtT(+z.tm||0)}\n\nObecne postępy zostaną nadpisane.`))return{ok:0,t:'Import anulowany – nic nie zmieniono.'};
+try{localStorage.setItem(K,o.data[K]);if(im!==null)localStorage.setItem(MK,im);if(od!==null)localStorage.setItem(ORK,od);}catch(e){return{ok:0,t:'❌ Nie udało się zapisać danych (brak miejsca w pamięci przeglądarki?).'};}
+window.__qmImp=true;try{location.reload();}catch(e){}return{ok:1,t:'✅ Wczytano kopię. Odświeżam aplikację…'};}
+QI.addEventListener('change',()=>{const f=QI.files&&QI.files[0];if(!f)return;if(f.size>25e6){S.imsg={ok:0,t:'❌ Plik jest za duży.'};render();return;}const r=new FileReader();r.onload=()=>{S.imsg=qmImport(String(r.result),m=>confirm(m));render();};r.onerror=()=>{S.imsg={ok:0,t:'❌ Nie udało się odczytać pliku.'};render();};r.readAsText(f);});
 function render(){let h=header(),su=SU[S.su],sg=su&&su.s[S.sg];
 if(S.v==='home')h+=`<div class="grid">${oIdx('home',SU.map(s=>s.id)).map(i=>{const s=SU[i];return `<button class="tile" style="--c:${s.c}" data-a="su" data-i="${i}" data-og="home" data-ok="${esc(s.id)}"><span class="em">${s.e}</span>${s.n}</button>`}).join('')}</div><div class="xhn">💡 Przytrzymaj kafelek 2 sekundy i przeciągnij, aby zmienić kolejność</div><button class="tile setile" style="--c:#64748B" data-a="set"><span class="em">⚙️</span><span>Ustawienia<small>Statystyki i informacje</small></span></button>`;
 else if(S.v==='su')h+=top(su.n)+`<div class="grid">${oIdx('s'+su.id,su.s.map(s=>s[0]+'|'+s[1])).map((i,j)=>{const s=su.s[i];return `<button class="tile" style="--c:${CO[j%7]}" data-a="sg" data-i="${i}" data-og="s${su.id}" data-ok="${esc(s[0]+'|'+s[1])}"><span class="em">${s[2]}</span>${s[1]}</button>`}).join('')}</div><div class="xhn">💡 Przytrzymaj kafelek 2 sekundy i przeciągnij, aby zmienić kolejność</div>`;
@@ -1783,7 +1806,8 @@ const RID=(su,k)=>su.id==='zag'||(su.id==='spo'&&k==='zag')||(su.id==='car'&&k==
 const DP={set:1,home:0,su:1,art:1,puz:1,gift:1,jz:1,hub:2,col:2,pzp:2,pzq:2,chess:2,dr:2,drp:3,play:3,res:3};
 function act(a,d){const su=SU[S.su],pv=S.v;
 if(a==='su'){S.su=+d.i;const id=SU[S.su].id;S.v=id==='art'?'art':id==='puz'?'puz':'su';}
-else if(a==='set'){S.v='set';qcRun();}
+else if(a==='exp')qmExport();else if(a==='imp')qmPick();
+else if(a==='set'){S.v='set';S.imsg=null;qcRun();}
 else if(a==='sg'){S.sg=+d.i;const k=su.s[S.sg][0];if(RID(su,k)){S.ri=true;S.l=null;S.m='t';S.qs=build(su.s[S.sg][3],null,TL);S.i=0;S.sc=0;S.sel=null;S.bt=[];S.ty='';iq();S.rs=[];S.v='play';}else{S.ri=false;S.v=(su.id==='sza'&&(k==='pz'||k==='gm'))?'chess':'hub';if(S.v==='chess')chInit(k);}}
 else if(a==='go'){S.l=d.l===undefined?null:+d.l;S.m=d.m;S.qs=build(su.s[S.sg][3],S.l,d.m==='t'?TL:8);S.i=0;S.sc=0;S.sel=null;S.bt=[];S.ty='';iq();S.rs=[];S.v='play';}
 else if(a==='pick'){if(S.sel!==null)return;const q=S.qs[S.i];S.sel=+d.i;point(q.o[S.sel]===q.a);}
@@ -1832,7 +1856,7 @@ else if(a==='part'){const p=PIC[S.pi];S.fl[d.i]=S.cc;if(p.p.every((_,i)=>S.fl[i]
 else if(a==='clr'){S.fl={};S.cdn=0;}
 else if(a==='pzo'){pzNew(+d.n,+d.i);S.v='pzp';}else if(a==='pzc')pzTap(+d.p);else if(a==='pzr')pzNew(S.pz.n,S.pz.i,S.pz.custom?S.pzc:null);else if(a==='pzn'){pzNew(+d.n,-1,S.pzc);S.v='pzp';}else if(a==='pzv')S.pz.pv=!S.pz.pv;
 if(DP[S.v]>DP[pv])try{history.pushState({d:DP[S.v]},'');}catch(e){}
-render();if(!['pzc','pzv','pzr','cs','cpr','cset','chint','cundo','cres','csol','pick','let','undo','part','pal','clr','key','ml','mr','di','db','kw','kchk','tf','tab','gn','gc','gb','jzchest','drundo','drclr','dpen','drskip','drdone'].includes(a))window.scrollTo(0,0);}
+render();if(!['pzc','pzv','pzr','cs','cpr','cset','chint','cundo','cres','csol','pick','let','undo','part','pal','clr','key','ml','mr','di','db','kw','kchk','tf','tab','gn','gc','gb','jzchest','drundo','drclr','dpen','drskip','drdone','exp','imp'].includes(a))window.scrollTo(0,0);}
 window.addEventListener('popstate',()=>{if(S.v==='chess'&&CH.m!=='gm'&&CH.pz&&CH.pz.i!==null){CH.pz={i:null};render();window.scrollTo(0,0);return;}const a=SU[S.su]&&SU[S.su].id==='art';S.v=S.v==='drp'?'dr':S.v==='dr'?'art':S.v==='play'||S.v==='res'?(S.ri?'su':'hub'):S.v==='hub'?(a?'art':'su'):S.v==='col'?'art':(S.v==='pzp'||S.v==='pzq')?'puz':S.v==='chess'?'su':'home';render();window.scrollTo(0,0);});
 try{history.replaceState({d:0},'');}catch(e){}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b)act(b.dataset.a,b.dataset);});
