@@ -1540,16 +1540,24 @@ const fmtT=s=>{s=Math.round(s);if(s<60)return s+' s';const m=Math.floor(s/60);if
 const fmtN=n=>Number(n).toLocaleString('pl-PL');
 const pct=(a,b)=>a+b?Math.round(a*100/(a+b))+'%':'–';
 const catInfo=id=>{const s=SU.find(x=>x.id===id);return s?{n:s.n,e:s.e}:id==='gift'?{n:'Nagrody',e:'🎁'}:id==='jz'?{n:'Układanka puzzle',e:'🧩'}:{n:'Menu główne',e:'🏠'};};
-const QC={done:false,run:false,p:0,tot:0,ns:0,unb:0,cat:{},nw:0};
+const QCK='quiz-wiedzy-qcount';
+const QC={done:false,run:false,p:0,tot:0,ns:0,unb:0,cat:{},nw:0,at:0};
+try{const o=JSON.parse(localStorage.getItem(QCK)||'null');if(o&&typeof o.tot==='number')Object.assign(QC,{done:true,tot:o.tot,ns:o.ns|0,unb:o.unb|0,cat:o.cat||{},nw:o.nw|0,at:+o.at||0});}catch(e){}
 function qcSeed(f){let a=20261126;const o=Math.random;Math.random=()=>{a=a+0x6D2B79F5|0;let x=Math.imul(a^a>>>15,1|a);x=x+Math.imul(x^x>>>7,61|x)^x;return((x^x>>>14)>>>0)/4294967296;};try{return f();}finally{Math.random=o;}}
-function qcSub(g,lv){const ks=new Set();let st=0,i=0;while(i<9000){let k;try{k=fk0(g(i%lv));}catch(e){break;}i++;if(ks.has(k)){if(++st>Math.max(300,2*ks.size))break;}else{ks.add(k);st=0;if(ks.size>=1000)return -1;}}return ks.size;}
-const qcHtml=()=>{if(!QC.done)return `<div class="qcn">…</div><div class="qcs">Liczę pytania… ${Math.round(QC.p*100)}%</div>`;
-return `<div class="qcn">${fmtN(QC.tot)}</div><div class="qcs">różnych pytań w ${QC.ns} quizach</div><div class="chps">${Object.entries(QC.cat).filter(e=>e[1]>0).sort((a,b)=>b[1]-a[1]).map(([id,n])=>`<span class="chp">${catInfo(id).e} ${fmtN(n)}</span>`).join('')}</div>${QC.unb?`<div class="qcs">+ ${QC.unb} quizów z zadaniami losowanymi na bieżąco (bez limitu)</div>`:''}${QC.nw?`<div class="qcn2">🆕 +${fmtN(QC.nw)} nowych pytań od Twojej ostatniej wizyty tutaj</div>`:''}<div class="qcs">Liczba aktualizuje się sama po każdym dodaniu pytań do aplikacji.</div>`;};
+function qcSub(g,lv){const ks=new Set();let st=0,i=0;while(i<9000){let k;try{k=fk0(g(i%lv));}catch(e){break;}i++;if(ks.has(k)){if(++st>Math.max(300,2*ks.size))break;}else{ks.add(k);st=0;if(ks.size>=1000||(i>=200&&ks.size>.9*i))return -1;}}return ks.size;}
+const qcHtml=()=>{let h='';
+if(QC.done){const wh=QC.at?new Date(QC.at).toLocaleString('pl-PL'):'';h+=`<div class="qcn">${fmtN(QC.tot)}</div><div class="qcs">różnych pytań w ${QC.ns} quizach</div><div class="chps">${Object.entries(QC.cat).filter(e=>e[1]>0).sort((a,b)=>b[1]-a[1]).map(([id,n])=>`<span class="chp">${catInfo(id).e} ${fmtN(n)}</span>`).join('')}</div>${QC.unb?`<div class="qcs">+ ${QC.unb} quizów z zadaniami losowanymi na bieżąco (bez limitu)</div>`:''}${QC.nw?`<div class="qcn2">🆕 +${fmtN(QC.nw)} nowych pytań od poprzedniego liczenia</div>`:''}<div class="qcs">${wh?'Ostatnio policzono: '+esc(wh)+'.':''}</div>`;}
+else h+=`<div class="qcs">Pytania nie były jeszcze liczone. Naciśnij „Policz pytania”.</div>`;
+if(QC.run)h+=`<div class="qcs"><b>Liczę pytania… ${Math.round(QC.p*100)}%</b>${QC.done?' (poprzedni wynik zostaje, dopóki nie skończę)':''}</div>`;
+else h+=`<div class="sbr"><button class="sbtn" data-a="qcgo">🔄 Policz pytania</button></div><div class="qcs">Po dodaniu nowych pytań naciśnij przycisk, a liczba się zaktualizuje.</div>`;
+return h;};
 function qcPaint(){if(S.v!=='set')return;const el=document.getElementById('qcnt');if(el)el.innerHTML=qcHtml();}
-function qcRun(){if(QC.done||QC.run)return;QC.run=true;const jobs=[];SU.forEach(su=>(su.s||[]).forEach(s=>{if(typeof s[3]==='function')jobs.push([su.id,s[3],su.id==='mat'?4:2]);}));let i=0;
-const step=()=>{const t0=Date.now();while(i<jobs.length&&Date.now()-t0<20){const [id,g,lv]=jobs[i++],n=qcSeed(()=>qcSub(g,lv));if(n<0)QC.unb++;else{QC.tot+=n;QC.ns++;QC.cat[id]=(QC.cat[id]||0)+n;}}QC.p=i/jobs.length;qcPaint();
-if(i<jobs.length)setTimeout(step,S.v==='set'?0:30);else{QC.done=true;QC.run=false;const z=sti();if(z.qc>0&&QC.tot>=z.qc+10)QC.nw=QC.tot-z.qc;if(!z.qc||QC.tot>=z.qc+10||QC.tot<=z.qc-10){z.qc=QC.tot;ps();}qcPaint();}};setTimeout(step,0);}
-setTimeout(qcRun,6000);
+function qcRun(){if(QC.run)return;QC.run=true;QC.p=0;const jobs=[];SU.forEach(su=>(su.s||[]).forEach(s=>{if(typeof s[3]==='function')jobs.push([su.id,s[3],su.id==='mat'?4:2]);}));const acc={tot:0,ns:0,unb:0,cat:{}};let i=0;
+const step=()=>{const t0=Date.now();while(i<jobs.length&&Date.now()-t0<20){const [id,g,lv]=jobs[i++];let n=0;try{n=qcSeed(()=>qcSub(g,lv));}catch(e){n=0;}if(n<0)acc.unb++;else{acc.tot+=n;acc.ns++;acc.cat[id]=(acc.cat[id]||0)+n;}}
+QC.p=i/jobs.length;if(i<jobs.length){qcPaint();setTimeout(step,S.v==='set'?0:30);return;}
+const prev=QC.done?QC.tot:0;Object.assign(QC,{done:true,run:false,tot:acc.tot,ns:acc.ns,unb:acc.unb,cat:acc.cat,nw:prev>0&&acc.tot>=prev+10?acc.tot-prev:0,at:Date.now()});
+try{localStorage.setItem(QCK,JSON.stringify({tot:QC.tot,ns:QC.ns,unb:QC.unb,cat:QC.cat,nw:QC.nw,at:QC.at}));}catch(e){}qcPaint();};
+setTimeout(step,0);qcPaint();}
 function setv(){const z=sti(),ci=catInfo,tod=z.d[dkey()]||0,ans=z.ok+z.no;
 const todA=z.da[dkey()]||[0,0];let sd=0,o=tod>0?0:1;while(sd<400&&(z.d[dkey(o)]||0)>=5){sd++;o++;}
 const gold=Object.values(sv.b).filter(v=>v===3).length;
@@ -1600,7 +1608,11 @@ function prRename(id){const p=PRF.list.find(x=>x.id===id);if(!p)return;let n;try
 function prDel(id){const p=PRF.list.find(x=>x.id===id);if(!p||PRF.list.length<=1){S.pmsg={ok:0,t:'Nie można usunąć jedynego profilu.'};return;}if(!confirm('Usunąć profil „'+p.n+'” razem ze wszystkimi jego wynikami?\n\nTej operacji nie można cofnąć.'))return;prKeys(id).forEach(k=>{try{localStorage.removeItem(k);}catch(e){}});PRF.list=PRF.list.filter(x=>x.id!==id);if(PRF.cur===id){PRF.cur=PRF.list[0].id;prSave();window.__qmImp=true;try{location.reload();}catch(e){}return;}prSave();S.pmsg={ok:1,t:'🗑️ Profil „'+p.n+'” został usunięty.'};}
 function prs(){return `<div class="stsec" id="profsec">👤 Profile</div><div class="stc"><div class="qcs" style="text-align:left">Każdy profil ma własne punkty, wyniki, statystyki i układ kafelków. Bez haseł – wystarczy imię.</div>${PRF.list.map(p=>`<div class="prow${p.id===PRF.cur?' on':''}"><span class="pn">${p.id===PRF.cur?'✅':'👤'} ${esc(p.n)}</span>${p.id===PRF.cur?'<span class="pa">aktywny</span>':`<button class="pb" data-a="prsw" data-id="${p.id}">Przełącz</button>`}<button class="pb" data-a="prrn" data-id="${p.id}" aria-label="Zmień nazwę">✏️</button>${PRF.list.length>1?`<button class="pb" data-a="prdl" data-id="${p.id}" aria-label="Usuń profil">🗑️</button>`:''}</div>`).join('')}<div class="sbr"><input id="prn" class="prin" maxlength="20" placeholder="Imię nowego profilu" autocomplete="off"><button class="sbtn g" data-a="prnew">➕ Nowy profil</button></div>${S.pmsg?`<div class="smsg ${S.pmsg.ok?'ok':'no'}">${esc(S.pmsg.t)}</div>`:''}</div>`;}
 /* ===== MATEMATYKA: działy ===== */
-function dzv(su){const used=new Set(su.g.flatMap(g=>g.k)),L=su.s.map((s,i)=>i).filter(i=>!used.has(su.s[i][0])),keys=L.map(i=>su.s[i][0]+'|'+su.s[i][1]);return top(su.n)+(su.dh?`<div class="lvh">${su.dh}</div>`:'')+`<div class="grid">${su.g.map(g=>`<button class="tile" style="--c:${g.c}" data-a="dz" data-i="${g.id}"><span class="em">${g.e}</span>${g.n}<small>${g.k.length} quizów</small></button>`).join('')}</div><div class="lvh">${su.rl||'Pozostałe quizy'}</div><div class="grid">${oIdx('s'+su.id,keys).map((o,j)=>{const i=L[o],s=su.s[i];return `<button class="tile" style="--c:${CO[j%7]}" data-a="sg" data-i="${i}" data-og="s${su.id}" data-ok="${esc(s[0]+'|'+s[1])}"><span class="em">${s[2]}</span>${s[1]}</button>`}).join('')}</div><div class="xhn">💡 Przytrzymaj kafelek 2 sekundy i przeciągnij, aby zmienić kolejność</div>`;}
+function dzv(su){const used=new Set(su.g.flatMap(g=>g.k)),L=su.s.map((s,i)=>i).filter(i=>!used.has(su.s[i][0])),keys=L.map(i=>su.s[i][0]+'|'+su.s[i][1]);
+const dt=g=>`<button class="tile" style="--c:${g.c}" data-a="dz" data-i="${g.id}"><span class="em">${g.e}</span>${g.n}<small>${g.k.length} quizów</small></button>`,pin=su.g.filter(g=>g.after),bot=su.g.filter(g=>!g.after);
+const items=oIdx('s'+su.id,keys).map((o,j)=>{const i=L[o],s=su.s[i];return{id:s[0],h:`<button class="tile" style="--c:${CO[j%7]}" data-a="sg" data-i="${i}" data-og="s${su.id}" data-ok="${esc(s[0]+'|'+s[1])}"><span class="em">${s[2]}</span>${s[1]}</button>`};});
+pin.forEach(g=>{let at=-1;items.forEach((x,k)=>{if(g.after.includes(x.id))at=k;});items.splice(at<0?items.length:at+1,0,{id:'dz:'+g.id,h:dt(g)});});
+return top(su.n)+(items.length?`<div class="grid">${items.map(x=>x.h).join('')}</div>`:'')+(bot.length?(su.dh?`<div class="lvh">${su.dh}</div>`:'')+`<div class="grid">${bot.map(dt).join('')}</div>`:'')+`<div class="xhn">💡 Przytrzymaj kafelek 2 sekundy i przeciągnij, aby zmienić kolejność</div>`;}
 function dzs(su){const g=su.g.find(x=>x.id===S.dz)||su.g[0],L=g.k.map(id=>su.s.findIndex(x=>x[0]===id)).filter(i=>i>=0),keys=L.map(i=>su.s[i][0]+'|'+su.s[i][1]);return top(g.e+' '+g.n)+`<div class="grid">${oIdx('s'+su.id+'_'+g.id,keys).map((o,j)=>{const i=L[o],s=su.s[i];return `<button class="tile" style="--c:${CO[j%7]}" data-a="sg" data-i="${i}" data-og="s${su.id}_${g.id}" data-ok="${esc(s[0]+'|'+s[1])}"><span class="em">${s[2]}</span>${s[1]}</button>`}).join('')}</div><div class="xhn">💡 Przytrzymaj kafelek 2 sekundy i przeciągnij, aby zmienić kolejność</div>`;}
 
 /* ===== DZIAŁANIA PISEMNE (pod kreską) ===== */
@@ -2056,7 +2068,8 @@ if(a==='su'){S.su=+d.i;S.dz=null;const id=SU[S.su].id;S.v=id==='art'?'art':id===
 else if(a==='dz'){S.dz=d.i;S.v='dz';}
 else if(a==='prsw')prGo(d.id);else if(a==='prnew')prNew();else if(a==='prrn')prRename(d.id);else if(a==='prdl')prDel(d.id);
 else if(a==='exp')qmExport();else if(a==='imp')qmPick();
-else if(a==='set'){S.v='set';S.imsg=null;S.pmsg=null;qcRun();}
+else if(a==='qcgo')qcRun();
+else if(a==='set'){S.v='set';S.imsg=null;S.pmsg=null;}
 else if(a==='sg'){S.sg=+d.i;const k=su.s[S.sg][0];if(RID(su,k)){S.ri=true;S.l=null;S.m='t';S.qs=build(su.s[S.sg][3],null,TL);S.i=0;S.sc=0;S.sel=null;S.bt=[];S.ty='';iq();S.rs=[];S.v='play';}else{S.ri=false;S.v=(su.id==='sza'&&(k==='pz'||k==='gm'))?'chess':'hub';if(S.v==='chess')chInit(k);}}
 else if(a==='go'){S.l=d.l===undefined?null:+d.l;S.m=d.m;S.qs=build(su.s[S.sg][3],S.l,d.m==='t'?TL:8);S.i=0;S.sc=0;S.sel=null;S.bt=[];S.ty='';iq();S.rs=[];S.v='play';}
 else if(a==='pick'){if(S.sel!==null)return;const q=S.qs[S.i];S.sel=+d.i;point(q.o[S.sel]===q.a);}
@@ -2107,7 +2120,7 @@ else if(a==='part'){const p=PIC[S.pi];S.fl[d.i]=S.cc;if(p.p.every((_,i)=>S.fl[i]
 else if(a==='clr'){S.fl={};S.cdn=0;}
 else if(a==='pzo'){pzNew(+d.n,+d.i);S.v='pzp';}else if(a==='pzc')pzTap(+d.p);else if(a==='pzr')pzNew(S.pz.n,S.pz.i,S.pz.custom?S.pzc:null);else if(a==='pzn'){pzNew(+d.n,-1,S.pzc);S.v='pzp';}else if(a==='pzv')S.pz.pv=!S.pz.pv;
 if(dpv(S.v)>dpv(pv))try{history.pushState({d:DP[S.v]},'');}catch(e){}
-render();if(!['pzc','pzv','pzr','cs','cpr','cset','chint','cundo','cres','csol','pick','let','undo','part','pal','clr','key','ml','mr','di','db','kw','kchk','tf','tab','gn','gc','gb','jzchest','drundo','drclr','dpen','drskip','drdone','exp','imp','prsw','prnew','prrn','prdl','wk','wh'].includes(a))window.scrollTo(0,0);}
+render();if(!['pzc','pzv','pzr','cs','cpr','cset','chint','cundo','cres','csol','pick','let','undo','part','pal','clr','key','ml','mr','di','db','kw','kchk','tf','tab','gn','gc','gb','jzchest','drundo','drclr','dpen','drskip','drdone','exp','imp','prsw','prnew','prrn','prdl','wk','wh','qcgo'].includes(a))window.scrollTo(0,0);}
 window.addEventListener('popstate',()=>{if(S.v==='chess'&&CH.m!=='gm'&&CH.pz&&CH.pz.i!==null){CH.pz={i:null};render();window.scrollTo(0,0);return;}const a=SU[S.su]&&SU[S.su].id==='art';const bk=(SU[S.su]&&SU[S.su].g&&S.dz!=null)?'dz':'su';S.v=S.v==='drp'?'dr':S.v==='dr'?'art':S.v==='dz'?'su':S.v==='play'||S.v==='res'?(S.ri?bk:'hub'):S.v==='hub'?(a?'art':bk):S.v==='col'?'art':(S.v==='pzp'||S.v==='pzq')?'puz':S.v==='chess'?'su':'home';if(S.v==='su')S.dz=null;render();window.scrollTo(0,0);});
 try{history.replaceState({d:0},'');}catch(e){}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b)act(b.dataset.a,b.dataset);});
@@ -2203,6 +2216,8 @@ pol.g=[{id:'cm',n:'Części mowy',e:'🧩',c:'#8B5CF6',k:['cm','cm4','cmA','cmB'
 {id:'sl',n:'Słownictwo',e:'📚',c:'#F59E0B',k:['ant','sl1','sl2','mt4','zd','mz','dg4','ry','mt','sl3','sl4','sl5','fr','prs','st','slt']},
 {id:'or',n:'Ortografia i interpunkcja',e:'✍️',c:'#22B573',k:['lit','o','rz','ch','zn','or','or1','or2','or3','or4','or5','or6','ort']}];
 pol.g.forEach(g=>{g.k=g.k.filter(id=>f(id));});pol.dh='📖 Nauka o języku';pol.rl='🔤 Pozostałe quizy';}}
+
+{const mt1=SU.find(x=>x.id==='mat');if(mt1&&mt1.g){const pi=mt1.g.find(g=>g.id==='pi');if(pi)pi.after=['mul','div'];}}
 
 render();
 })();
