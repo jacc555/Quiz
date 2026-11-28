@@ -325,9 +325,13 @@ h2{margin:0;font-size:1.5rem;flex:1}
 .wst{text-align:left;font-size:1rem;font-weight:600;margin:10px 0 0;padding-left:22px;line-height:1.45}
 .wmis{text-align:center;font-size:.95rem;color:var(--mut);margin:6px 0}
 .kp span{min-height:62px}
+.gnav.sm{gap:10px;padding:5px 12px max(5px,env(safe-area-inset-bottom,0px))}
+.gnav.sm button{width:62px;height:32px;border-radius:12px;font-size:19px}
+body.nbs{padding-bottom:62px}
 </style></head><body><div id="app"></div>
 <script>
 (function(){'use strict';
+let HN=0;try{const ph0=history.pushState;history.pushState=function(){HN++;return ph0.apply(this,arguments);};}catch(e){}
 const PK='quiz-wiedzy-profiles';let PRF={cur:'main',list:[{id:'main',n:'Profil główny'}]};
 try{const o=JSON.parse(localStorage.getItem(PK)||'null');if(o&&Array.isArray(o.list)&&o.list.length&&o.list.every(p=>p&&typeof p.id==='string'&&typeof p.n==='string')){PRF=o;if(!PRF.list.some(p=>p.id===PRF.cur))PRF.cur=PRF.list[0].id;}}catch(e){}
 const pnm=()=>{const p=PRF.list.find(x=>x.id===PRF.cur);return p?p.n:'';};
@@ -1326,8 +1330,8 @@ b+=`<div class="gh"><i></i><span>Poziom ${L+1}: ${GTI[L%GTI.length]}${L>=GTI.len
 out+=`<div class="gb" style="--c:${pal[0]};--d:${pal[1]}">${b}</div>`;}
 return out+'</div>';}
 function giftAfter(){if(S.v==='gift'&&S.gfx){S.gfx=false;const e=document.getElementById('gcur');if(e)e.scrollIntoView({block:'center'});else window.scrollTo(0,document.body.scrollHeight);}}
-const NAVV=['home','gift','jz'];
-function navbar(){if(!NAVV.includes(S.v))return'';const g=S.v==='gift',z=S.v==='jz',b=skBadge();return`<nav class="gnav${g||z?' dk':''}"><button class="${g||z?'':'on'}" data-a="tab" data-t="home" aria-label="Ekran główny">🏠</button><button class="${g?'on':''}" data-a="tab" data-t="gift" aria-label="Nagrody">🎁</button><button class="${z?'on':''}" data-a="tab" data-t="jz" aria-label="Puzzle">${SKNAV}${b?`<i class="gbd">${b}</i>`:''}</button></nav>`;}
+const NAVV=['home','gift','jz'],NAVS=['su','dz','hub','art','puz','col','dr','set','res'];
+function navbar(){const sm=NAVS.includes(S.v);if(!NAVV.includes(S.v)&&!sm)return'';const g=S.v==='gift',z=S.v==='jz',b=skBadge();return`<nav class="gnav${g||z?' dk':''}${sm?' sm':''}"><button class="${g||z?'':'on'}" data-a="tab" data-t="home" aria-label="Ekran główny">🏠</button><button class="${g?'on':''}" data-a="tab" data-t="gift" aria-label="Nagrody">🎁</button><button class="${z?'on':''}" data-a="tab" data-t="jz" aria-label="Puzzle">${SKNAV}${b?`<i class="gbd">${b}</i>`:''}</button></nav>`;}
 {let gl=false;window.addEventListener('scroll',()=>{if(S.v!=='gift'||gl)return;if(window.scrollY<700){gl=true;const h0=document.documentElement.scrollHeight,y0=window.scrollY;S.gn=Math.max(S.gn||0,Math.floor(sv.t/LP)+4)+3;render();window.scrollTo(0,y0+document.documentElement.scrollHeight-h0);setTimeout(()=>{gl=false;},120);}},{passive:true});}
 
 const STO=[
@@ -1838,7 +1842,7 @@ else if(S.v==='puz')h+=pzList();else if(S.v==='pzp')h+=pzPlay();else if(S.v==='p
 else if(S.v==='chess')h+=chessv();
 else if(S.v==='set')h+=setv();else if(S.v==='gift')h+=giftv();
 else if(S.v==='jz')h+=jzlv();
-h+=navbar();document.body.classList.toggle('gf',S.v==='gift'||S.v==='jz');document.body.classList.toggle('nb',NAVV.includes(S.v));document.getElementById('app').innerHTML=h;giftAfter();jzAfter();drAfter();}
+h+=navbar();document.body.classList.toggle('gf',S.v==='gift'||S.v==='jz');document.body.classList.toggle('nb',NAVV.includes(S.v));document.body.classList.toggle('nbs',NAVS.includes(S.v));document.getElementById('app').innerHTML=h;giftAfter();jzAfter();drAfter();}
 function play(){const su=SU[S.su],q=S.qs[S.i],L=S.m==='l',n=S.qs.length;
 let d='<div class="dots">'+S.qs.map((x,i)=>`<b class="${i<S.i?(S.rs[i]?'y':'n'):i===S.i?'c':''}"></b>`).join('')+'</div>';
 let b=`<div class="card"><div class="qline"><button class="spk" data-a="say" data-w="${esc(q.w||qsp(q))}" data-lang="${q.w?'en-US':'pl-PL'}" aria-label="Odsłuchaj pytanie">🔊</button><div class="q">${esc(q.p)}</div></div>${gapB(q,L)}</div>`;
@@ -2079,7 +2083,7 @@ else if(a==='wk'){const q=S.qs[S.i];if(!q||q.t!=='w'||S.sel!==null||S.m==='l')re
 else if(a==='wh'){S.wh=1;}
 else if(a==='tf'){S.tf=d.f==='g'?'g':'z';}
 else if(a==='jzchest'){skOpen();}
-else if(a==='tab'){if(d.t==='gift'){if(S.v!=='gift'){S.v='gift';S.gfx=true;S.gt=null;}}else if(d.t==='jz'){if(S.v!=='jz'){S.v='jz';}window.scrollTo(0,0);}else if(S.v!=='home'){if(DP[S.v]>0){history.back();return;}S.v='home';window.scrollTo(0,0);}}
+else if(a==='tab'){if(d.t==='gift'){if(S.v!=='gift'){S.v='gift';S.gfx=true;S.gt=null;}}else if(d.t==='jz'){if(S.v!=='jz'){S.v='jz';}window.scrollTo(0,0);}else if(S.v!=='home'){if(HN>0){const n=HN;HN=0;S.hom=1;try{history.go(-n);}catch(e){}setTimeout(()=>{if(S.hom){S.hom=0;S.v='home';S.dz=null;render();window.scrollTo(0,0);}},600);return;}S.v='home';S.dz=null;window.scrollTo(0,0);}}
 else if(a==='gn'){const n=+d.i;S.gt=S.gt===n?null:n;if(Math.floor(sv.t/LP*10)>=0){}}
 else if(a==='gc'){S.gcw=+d.i;stOpen(+d.i);}
 else if(a==='gb'){stOpen(+d.i);}
@@ -2121,7 +2125,7 @@ else if(a==='clr'){S.fl={};S.cdn=0;}
 else if(a==='pzo'){pzNew(+d.n,+d.i);S.v='pzp';}else if(a==='pzc')pzTap(+d.p);else if(a==='pzr')pzNew(S.pz.n,S.pz.i,S.pz.custom?S.pzc:null);else if(a==='pzn'){pzNew(+d.n,-1,S.pzc);S.v='pzp';}else if(a==='pzv')S.pz.pv=!S.pz.pv;
 if(dpv(S.v)>dpv(pv))try{history.pushState({d:DP[S.v]},'');}catch(e){}
 render();if(!['pzc','pzv','pzr','cs','cpr','cset','chint','cundo','cres','csol','pick','let','undo','part','pal','clr','key','ml','mr','di','db','kw','kchk','tf','tab','gn','gc','gb','jzchest','drundo','drclr','dpen','drskip','drdone','exp','imp','prsw','prnew','prrn','prdl','wk','wh','qcgo'].includes(a))window.scrollTo(0,0);}
-window.addEventListener('popstate',()=>{if(S.v==='chess'&&CH.m!=='gm'&&CH.pz&&CH.pz.i!==null){CH.pz={i:null};render();window.scrollTo(0,0);return;}const a=SU[S.su]&&SU[S.su].id==='art';const bk=(SU[S.su]&&SU[S.su].g&&S.dz!=null)?'dz':'su';S.v=S.v==='drp'?'dr':S.v==='dr'?'art':S.v==='dz'?'su':S.v==='play'||S.v==='res'?(S.ri?bk:'hub'):S.v==='hub'?(a?'art':bk):S.v==='col'?'art':(S.v==='pzp'||S.v==='pzq')?'puz':S.v==='chess'?'su':'home';if(S.v==='su')S.dz=null;render();window.scrollTo(0,0);});
+window.addEventListener('popstate',()=>{if(S.hom){S.hom=0;HN=0;S.v='home';S.dz=null;render();window.scrollTo(0,0);return;}HN=Math.max(0,HN-1);if(S.v==='chess'&&CH.m!=='gm'&&CH.pz&&CH.pz.i!==null){CH.pz={i:null};render();window.scrollTo(0,0);return;}const a=SU[S.su]&&SU[S.su].id==='art';const bk=(SU[S.su]&&SU[S.su].g&&S.dz!=null)?'dz':'su';S.v=S.v==='drp'?'dr':S.v==='dr'?'art':S.v==='dz'?'su':S.v==='play'||S.v==='res'?(S.ri?bk:'hub'):S.v==='hub'?(a?'art':bk):S.v==='col'?'art':(S.v==='pzp'||S.v==='pzq')?'puz':S.v==='chess'?'su':'home';if(S.v==='su')S.dz=null;render();window.scrollTo(0,0);});
 try{history.replaceState({d:0},'');}catch(e){}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b)act(b.dataset.a,b.dataset);});
 /* ===== ROZBUDOWA: ułamki ===== */
